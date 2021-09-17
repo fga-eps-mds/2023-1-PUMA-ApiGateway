@@ -1,0 +1,98 @@
+version: "3"
+services:
+    db:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: ${DB_PASS}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_DB: ${DB}
+            DATABASE_URL: ${DB_URL}
+        volumes:
+            - ./dbdata:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        networks:
+            - puma-network
+    project-service:
+        container_name: project-service
+        build:
+            context: ../${PROJECT_PATH}/
+            dockerfile: ../${PROJECT_PATH}/dev.Dockerfile
+        ports:
+            - "3000:3000"
+        depends_on:
+            - db
+        volumes:
+            - ../${PROJECT_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network
+    user-service:
+        container_name: user-service
+        build:
+            context: ../${USER_PATH}/
+            dockerfile: ../${USER_PATH}/dev.Dockerfile
+        ports:
+            - "3001:3001"
+        depends_on:
+            - db
+        volumes:
+            - ../${USER_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network
+    alocate-service:
+        container_name: alocate-service
+        build:
+            context: ../${ALOCATE_PATH}
+            dockerfile: ../${ALOCATE_PATH}/dev.Dockerfile
+        ports:
+            - "3002:3002"
+        depends_on:
+            - db
+        volumes:
+            - ../${ALOCATE_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network
+    notify-service:
+        container_name: notify-service
+        build:
+            context: ../${NOTIFY_PATH}/
+            dockerfile: ../${NOTIFY_PATH}/dev.Dockerfile
+        ports:
+            - "3003:3003"
+        depends_on:
+            - db
+        volumes:
+            - ../${NOTIFY_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network
+    api-gateway:
+        container_name: api-gateway
+        build:
+            context: .
+            dockerfile: ./dev.Dockerfile
+        ports:
+            - "3004:3004"
+        volumes:
+            - ./:/app
+            - /app/node_modules
+        networks:
+            - puma-network
+    frontend:
+        container_name: frontend
+        build:
+            context: ../${FRONT_PATH}/puma
+            dockerfile: ./dev.Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - ../${FRONT_PATH}/puma:/app
+            - /app/node_modules
+        networks:
+            - puma-network
+            
+networks:
+    puma-network:            
