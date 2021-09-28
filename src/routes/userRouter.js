@@ -6,7 +6,6 @@ module.exports = {
     addAluno: (body) => {
         const userUrl = `${global.URL_USER}/aluno`;
         const reqBody = body;
-        console.log("lel  " + userUrl)
         return new Promise((resolve, reject) => {
             axios.post(userUrl, reqBody).then(() => {
                 resolve();
