@@ -4,14 +4,15 @@ require('../config/environment');
 
 module.exports = {
     addAluno: (body) => {
-        const URL = `${global.URL_USER}/aluno`;
+        const userUrl = `${global.URL_USER}/aluno`;
         const reqBody = body;
-        return new Promise((resolve) => {
-            axios.post(URL, reqBody).then((res) => {
-                resolve(res.data)
+        console.log("lel  " + userUrl)
+        return new Promise((resolve, reject) => {
+            axios.post(userUrl, reqBody).then(() => {
+                resolve();
+            }).catch(() => {
+                reject();
             });
-        }).catch(() => {
-            resolve(JSON.parse('{"cod": 400}'));
         });
     },
     getAluno: (matriculaIdParam) => {
