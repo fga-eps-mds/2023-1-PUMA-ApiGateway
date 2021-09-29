@@ -7,10 +7,10 @@ module.exports = {
         const userUrl = `${global.URL_USER}/aluno`;
         const reqBody = body;
         return new Promise((resolve, reject) => {
-            axios.post(userUrl, reqBody).then(() => {
-                resolve();
-            }).catch(() => {
-                reject();
+            axios.post(userUrl, reqBody).then((response) => {
+                resolve(response);
+            }).catch((error) => {
+                reject(error);
             });
         });
     },

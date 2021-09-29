@@ -15,8 +15,8 @@ router.post('/aluno', (req, res) =>{
     .then((response) => {
         res.status(200).json({ response: response });
     })
-    .catch((response) => {
-        res.status(400).json({ error: 'error' });
+    .catch((error) => {
+        res.status(400).json({ error: error });
     });
 })
 
