@@ -12,17 +12,19 @@ router.get('/', (req, res) => {
 
 router.post('/register', (req, res) => {
     user.registerUser(req.body).then((response) => {
-        res.status(200).json({ response: response });
+        console.log('res 200');
+        res.status(200).json({  });
     }).catch((error) => {
-        res.status(400).json({ error: error });
+        console.log('res 400');
+        res.status(400).json({  });
     });
 })
 
 router.post('/login', (req, res) => {
     user.logUserIn(req.body).then((response) => {
-        res.status(200).json({ response: response });
+        res.status(200).json({  });
     }).catch((error) => {
-        res.status(400).json({ error: error });
+        res.status(400).json({  });
     });
 })
 
