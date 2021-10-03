@@ -3,8 +3,19 @@ const axios = require('axios');
 require('../config/environment');
 
 module.exports = {
-    addAluno: (body) => {
-        const userUrl = `${global.URL_USER}/aluno`;
+    registerUser: (body) => {
+        const userUrl = `${global.URL_USER}/register`;
+        const reqBody = body;
+        return new Promise((resolve, reject) => {
+            axios.post(userUrl, reqBody).then((response) => {
+                resolve(response);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    },
+    logUserIn: (body) => {
+        const userUrl = `${global.URL_USER}/login`;
         const reqBody = body;
         return new Promise((resolve, reject) => {
             axios.post(userUrl, reqBody).then((response) => {
