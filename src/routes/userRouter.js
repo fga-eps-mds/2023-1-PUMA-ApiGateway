@@ -1,20 +1,34 @@
+/* eslint-disable import/no-unresolved */
 const axios = require('axios');
+const jwt = require('jsonwebtoken');
 
 require('../config/environment');
 
 module.exports = {
-  addAluno: (body) => {
-    const userUrl = `${global.URL_USER}/aluno`;
+  registerUser: (body) => {
+    const userUrl = `${global.URL_USER}/register`;
     const reqBody = body;
     return new Promise((resolve, reject) => {
-      axios
-        .post(userUrl, reqBody)
-        .then((response) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error);
-        });
+      axios.post(userUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+  logUserIn: (body) => {
+    const userUrl = `${global.URL_USER}/login`;
+    const reqBody = body;
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async (resolve, reject) => {
+      try {
+        let userId = await axios.post(userUrl, reqBody);
+        userId = userId.data;
+        const token = jwt.sign({ userId }, global.SECRET, { expiresIn: 604800 });
+        resolve(token);
+      } catch (e) {
+        reject(e);
+      }
     });
   },
   getAluno: (matriculaIdParam) => {
