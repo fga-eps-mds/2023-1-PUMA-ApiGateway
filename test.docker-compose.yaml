@@ -1,0 +1,117 @@
+version: "3"
+services:
+    dbtest:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: ${DB_PASS}
+            POSTGRES_USER: ${DB_USER}
+            POSTGRES_DB: ${DB}
+            DATABASE_URL: ${DB_URL}
+            ENVIRONMENT: test
+        ports:
+            - "5432:5432"
+        networks:
+            - puma-network-test
+    project-service-test:
+        container_name: project-service-test
+        environment:
+            ENVIRONMENT: test
+        build:
+            context: ../${PROJECT_PATH}/
+            dockerfile: dev.Dockerfile
+        ports:
+            - "3000:3000"
+        depends_on:
+            - dbtest
+        volumes:
+            - ../${PROJECT_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network-test
+    user-service-test:
+        container_name: user-service-test
+        environment:
+            ENVIRONMENT: test
+        build:
+            context: ../${USER_PATH}/
+            dockerfile: dev.Dockerfile
+        ports:
+            - "3001:3001"
+        depends_on:
+            - dbtest
+        volumes:
+            - ../${USER_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network-test
+    alocate-service-test:
+        container_name: alocate-service-test
+        environment:
+            ENVIRONMENT: test
+        build:
+            context: ../${ALOCATE_PATH}
+            dockerfile: dev.Dockerfile
+        ports:
+            - "3002:3002"
+        depends_on:
+            - dbtest
+        volumes:
+            - ../${ALOCATE_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network-test
+    notify-service-test:
+        container_name: notify-service
+        environment:
+            ENVIRONMENT: test
+        build:
+            context: ../${NOTIFY_PATH}/
+            dockerfile: dev.Dockerfile
+        ports:
+            - "3003:3003"
+        depends_on:
+            - dbtest
+        volumes:
+            - ../${NOTIFY_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network-test
+    api-gateway-test:
+        container_name: api-gateway-test
+        environment:
+            ENVIRONMENT: test
+        build:
+            context: .
+            dockerfile: dev.Dockerfile
+        ports:
+            - "3004:3004"
+        volumes:
+            - ./:/app
+            - /app/node_modules
+        networks:
+            - puma-network-test
+        command:
+            [
+                "./wait-for-it.sh",
+                "api-gateway-test:3004",
+                "--",
+                "npm test"
+            ]
+        
+    # frontend-test:
+    #     container_name: frontend-test
+    #     environment:
+    #         ENVIRONMENT: test
+    #     build:
+    #         context: ../${FRONT_PATH}/puma
+    #         dockerfile: dev.Dockerfile
+    #     ports:
+    #         - "8080:8080"
+    #     volumes:
+    #         - ../${FRONT_PATH}/puma:/app
+    #         - /app/node_modules
+    #     networks:
+    #         - puma-network-test
+            
+networks:
+    puma-network-test:

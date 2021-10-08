@@ -2,6 +2,10 @@ include .env
 
 .PHONY: up-build
 
+test: 
+	sudo docker-compose -f test.docker-compose.yaml up --build
+
+
 up-build:
 	chmod +x ../${ALOCATE_PATH}/wait-for-it.sh && \
 	chmod +x ../${USER_PATH}/wait-for-it.sh && \
