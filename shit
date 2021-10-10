@@ -1,1 +1,0 @@
-Ta dando bad address db porque o dockerfile dá wait_for_it.sh db. Temos que arrrumar possivelmente colocando os entrypoinsts nos docker composes.
