@@ -60,7 +60,7 @@ module.exports = {
   fail: {
     aluno: {
       name: 'Luis',
-      email: 'luishptaira@gmail.com',
+      email: 'luishptaira2@gmail.com',
       password: '123',
       repeatPassword: '123',
       type: 'Aluno',
@@ -72,7 +72,7 @@ module.exports = {
       cpf: '',
     },
     alunoLoginWithoutPassword: {
-      email: 'luishptaira@gmail.com',
+      email: 'luishptaira3@gmail.com',
       password: '',
     },
     alunoLoginWithoutemail: {
@@ -85,7 +85,7 @@ module.exports = {
     },
     professor: {
       name: 'Mister M',
-      email: 'Mister M@gmail.com',
+      email: 'Mister M2@gmail.com',
       repeatPassword: '123',
       matricula: 198298376,
       type: 'Professor',
@@ -98,7 +98,7 @@ module.exports = {
     },
     externalPhysical: {
       name: 'Vandor',
-      email: 'vandoropadeiro@gmail.com',
+      email: 'vandoropadeiro3@gmail.com',
       password: '123',
       repeatPassword: '123',
       matricula: '',
@@ -111,7 +111,7 @@ module.exports = {
     },
     externaljuridical: {
       name: 'Vandor',
-      email: 'padariadovandor@gmail.com',
+      email: 'padariadovandor4@gmail.com',
       password: '123',
       repeatPassword: '123',
       matricula: '',
@@ -122,5 +122,5 @@ module.exports = {
       socialReason: 'Padaria',
       cpf: '',
     },
-  }
-}
+  },
+};

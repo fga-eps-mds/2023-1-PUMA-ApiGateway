@@ -12,10 +12,8 @@ router.get('/', (req, res) => {
 
 router.post('/register', (req, res) => {
   userRouter.registerUser(req.body).then(() => {
-    console.log('res 200');
     res.status(200).json({ });
   }).catch(() => {
-    console.log('res 400');
     res.status(400).json({ });
   });
 });
