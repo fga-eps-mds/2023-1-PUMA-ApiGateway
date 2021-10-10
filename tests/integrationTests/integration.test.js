@@ -1,22 +1,150 @@
 const assert = require('assert');
+const axios = require('axios');
+const environment = require('../../src/config/environment');
+const users = require('./constants');
+environment.configEnv();
 
-const newUser = {
-    name: this.name,
-    email: this.email,
-    password: this.password,
-    repeatPassword: this.repeatPassword,
-    matricula: this.matricula,
-    type: this.type,
-    externalAgentType: this.externalAgentType,
-    cnpj: this.cnpj,
-    cep: this.cep,
-    companyName: this.companyName,
-    socialReason: this.socialReason,
-    cpf: this.cpf,
-  };
 
-describe('coco', () => {
-    it('shoud be gay',() => {
-        assert.equal(1, 1);
+const registerUrl = `${global.URL_GATEWAY}/register`;
+const loginUrl = `${global.URL_GATEWAY}/login`;
+
+
+describe('Register Success', () => {
+  it('Should register Aluno', (done) => {
+    axios.post(registerUrl, users.success.aluno).then(() => {
+      done();
+    }).catch(() => {
+      done(new Error("Failed to register"));
     });
-})
+  });
+
+  it('Should register Professor', (done) => {
+    axios.post(registerUrl, users.success.professor).then(() => {
+      done();
+    }).catch(() => {
+      done(new Error("Failed to register"));
+    });
+  });
+
+  it('Should register External Physical', (done) => {
+    axios.post(registerUrl, users.success.externalPhysical).then(() => {
+      done();
+    }).catch(() => {
+      done(new Error("Failed to register"));
+    });
+  });
+
+  it('Should register External Juridical', (done) => {
+    axios.post(registerUrl, users.success.externaljuridical).then(() => {
+      done();
+    }).catch(() => {
+      done(new Error("Failed to register"));
+    });
+  });
+});
+
+describe('Register Fail', () => {
+  it('Should not register Aluno', (done) => {
+    axios.post(registerUrl, users.fail.aluno).then(() => {
+      done(new Error("User was registered"));
+    }).catch(() => {
+      done();
+    });
+  });
+
+  it('Should not register Professor', (done) => {
+    axios.post(registerUrl, users.fail.professor).then(() => {
+      done(new Error("User was registered"));
+    }).catch(() => {
+      done();
+    });
+  });
+
+  it('Should not register External Physical', (done) => {
+    axios.post(registerUrl, users.fail.externalPhysical).then(() => {
+      done(new Error("User was registered"));
+    }).catch(() => {
+      done();
+    });
+  });
+
+  it('Should not register External Juridical', (done) => {
+    axios.post(registerUrl, users.fail.externaljuridical).then(() => {
+      done(new Error("User was registered"));
+    }).catch(() => {
+      done();
+    });
+  });
+});
+
+describe('Login', () => {
+  it('Should Login Aluno', (done) => {
+    axios.post(loginUrl, users.success.aluno).then((response) => {
+      assert.equal(response.data.auth, true);
+      done();
+    }).catch(() => {
+      done(new Error("Failed to login"));
+    });
+  });
+
+  it('Should Login Professor', (done) => {
+    axios.post(loginUrl, users.success.professor).then((response) => {
+      assert.equal(response.data.auth, true);
+      done();
+    }).catch(() => {
+      done(new Error("Failed to login"));
+    });
+  });
+
+  it('Should Login External Physical', (done) => {
+    axios.post(loginUrl, users.success.externalPhysical).then((response) => {
+      assert.equal(response.data.auth, true);
+      done();
+    }).catch(() => {
+      done(new Error("Failed to login"));
+    });
+  });
+
+  it('Should Login External Juridical', (done) => {
+    axios.post(loginUrl, users.success.externaljuridical).then((response) => {
+      assert.equal(response.data.auth, true);
+      done();
+    }).catch(() => {
+      done(new Error("Failed to login"));
+    });
+  });
+});
+
+describe('Login Fail', () => {
+  it('Should not Login missing e mail', () => {
+    axios.post(loginUrl, users.fail.alunoLoginWithoutemail).then(() => {
+      done(new Error("Logged in"));
+      done();
+    }).catch((response) => {
+      assert.equal(response.data.auth, false);
+      done();
+    });
+  });
+
+  it('Should not Login missing password', () => {
+    axios.post(loginUrl, users.fail.alunoLoginWithoutPassword).then(() => {
+      done(new Error("Logged in"));
+      done();
+    }).catch((response) => {
+      assert.equal(response.data.auth, false);
+      done();
+    });
+  });
+
+  it('Should not Login unexisting user', () => {
+    axios.post(loginUrl, users.fail.loginUnexistingUser).then(() => {
+      done(new Error("Logged in"));
+      done();
+    }).catch((response) => {
+      assert.equal(response.data.auth, false);
+      done();
+    });
+  });
+
+
+});

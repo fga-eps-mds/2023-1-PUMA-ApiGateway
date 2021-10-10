@@ -3,11 +3,14 @@ include .env
 .PHONY: up-build
 
 test:
-	sudo docker-compose -f test.docker-compose.yaml up -d && \
+	(sudo docker-compose -f test.docker-compose.yaml up -d && \
 	sudo docker-compose -f test.docker-compose.yaml exec project-service-test npm test && \
 	sudo docker-compose -f test.docker-compose.yaml exec user-service-test npm test && \
 	sudo docker-compose -f test.docker-compose.yaml exec notify-service-test npm test && \
-	sudo docker-compose -f test.docker-compose.yaml exec api-gateway-test npm test && \
+	sudo docker-compose -f test.docker-compose.yaml exec api-gateway-test npm test);\
+	sudo docker-compose -f test.docker-compose.yaml down
+
+test-down:
 	sudo docker-compose -f test.docker-compose.yaml down
 
 up-build:
