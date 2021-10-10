@@ -1,19 +1,24 @@
 const assert = require('assert');
 const axios = require('axios');
 const environment = require('../../src/config/environment');
-const users = require('./constants');
 
 environment.configEnv();
 
+const users = require('./constants');
+
 const registerUrl = `${global.URL_GATEWAY}/register`;
 const loginUrl = `${global.URL_GATEWAY}/login`;
+
+const failedToRegisterMessage = 'Failed to register';
+const userWasRegisteredMessage = 'User was Registered';
+const failedToLoginMessage = 'Failed to login';
 
 describe('Register Success', () => {
   it('Should register Aluno', (done) => {
     axios.post(registerUrl, users.success.aluno).then(() => {
       done();
     }).catch(() => {
-      done(new Error('Failed to register'));
+      done(new Error(failedToRegisterMessage));
     });
   });
 
@@ -21,7 +26,7 @@ describe('Register Success', () => {
     axios.post(registerUrl, users.success.professor).then(() => {
       done();
     }).catch(() => {
-      done(new Error('Failed to register'));
+      done(new Error(failedToRegisterMessage));
     });
   });
 
@@ -29,7 +34,7 @@ describe('Register Success', () => {
     axios.post(registerUrl, users.success.externalPhysical).then(() => {
       done();
     }).catch(() => {
-      done(new Error('Failed to register'));
+      done(new Error(failedToRegisterMessage));
     });
   });
 
@@ -37,7 +42,7 @@ describe('Register Success', () => {
     axios.post(registerUrl, users.success.externaljuridical).then(() => {
       done();
     }).catch(() => {
-      done(new Error('Failed to register'));
+      done(new Error(failedToRegisterMessage));
     });
   });
 });
@@ -45,7 +50,7 @@ describe('Register Success', () => {
 describe('Register Fail', () => {
   it('Should not register Aluno', (done) => {
     axios.post(registerUrl, users.fail.aluno).then(() => {
-      done(new Error('User was registered'));
+      done(new Error(userWasRegisteredMessage));
     }).catch(() => {
       done();
     });
@@ -53,7 +58,7 @@ describe('Register Fail', () => {
 
   it('Should not register Professor', (done) => {
     axios.post(registerUrl, users.fail.professor).then(() => {
-      done(new Error('User was registered'));
+      done(new Error(userWasRegisteredMessage));
     }).catch(() => {
       done();
     });
@@ -61,7 +66,7 @@ describe('Register Fail', () => {
 
   it('Should not register External Physical', (done) => {
     axios.post(registerUrl, users.fail.externalPhysical).then(() => {
-      done(new Error('User was registered'));
+      done(new Error(userWasRegisteredMessage));
     }).catch(() => {
       done();
     });
@@ -69,7 +74,7 @@ describe('Register Fail', () => {
 
   it('Should not register External Juridical', (done) => {
     axios.post(registerUrl, users.fail.externaljuridical).then(() => {
-      done(new Error('User was registered'));
+      done(new Error(userWasRegisteredMessage));
     }).catch(() => {
       done();
     });
@@ -82,7 +87,7 @@ describe('Login', () => {
       assert.equal(response.data.auth, true);
       done();
     }).catch(() => {
-      done(new Error('Failed to login'));
+      done(new Error(failedToLoginMessage));
     });
   });
 
@@ -90,8 +95,9 @@ describe('Login', () => {
     axios.post(loginUrl, users.success.professor).then((response) => {
       assert.equal(response.data.auth, true);
       done();
-    }).catch(() => {
-      done(new Error('Failed to login'));
+    }).catch((response) => {
+      console.log(users.success.professor);
+      done(new Error(failedToLoginMessage));
     });
   });
 
@@ -100,7 +106,7 @@ describe('Login', () => {
       assert.equal(response.data.auth, true);
       done();
     }).catch(() => {
-      done(new Error('Failed to login'));
+      done(new Error(failedToLoginMessage));
     });
   });
 
@@ -109,7 +115,7 @@ describe('Login', () => {
       assert.equal(response.data.auth, true);
       done();
     }).catch(() => {
-      done(new Error('Failed to login'));
+      done(new Error(failedToLoginMessage));
     });
   });
 });

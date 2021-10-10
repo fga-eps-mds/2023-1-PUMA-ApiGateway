@@ -1,10 +1,13 @@
+const password = global.URL_GATEWAY;
+const agenteExterno = 'Agente Externo';
+
 module.exports = {
   success: {
     aluno: {
       name: 'Luis',
       email: 'luishptaira@gmail.com',
-      password: '123',
-      repeatPassword: '123',
+      password,
+      repeatpassword: password,
       matricula: 170109208,
       type: 'Aluno',
       externalAgentType: '',
@@ -17,8 +20,8 @@ module.exports = {
     professor: {
       name: 'Mister M',
       email: 'Mister M@gmail.com',
-      password: '123',
-      repeatPassword: '123',
+      password,
+      repeatpassword: password,
       matricula: 198298376,
       type: 'Professor',
       externalAgentType: '',
@@ -31,10 +34,10 @@ module.exports = {
     externalPhysical: {
       name: 'Vandor',
       email: 'vandoropadeiro@gmail.com',
-      password: '123',
-      repeatPassword: '123',
+      password,
+      repeatpassword: password,
       matricula: '',
-      type: 'Agente Externo',
+      type: agenteExterno,
       externalAgentType: 'Pessoa Fisica',
       cnpj: '',
       cep: '',
@@ -45,10 +48,10 @@ module.exports = {
     externaljuridical: {
       name: 'Vandor',
       email: 'padariadovandor@gmail.com',
-      password: '123',
-      repeatPassword: '123',
+      password,
+      repeatpassword: password,
       matricula: '',
-      type: 'Agente Externo',
+      type: agenteExterno,
       externalAgentType: 'Pessoa Juridica',
       cnpj: '12345678901234',
       cep: '12345678',
@@ -61,8 +64,8 @@ module.exports = {
     aluno: {
       name: 'Luis',
       email: 'luishptaira2@gmail.com',
-      password: '123',
-      repeatPassword: '123',
+      password,
+      repeatpassword: password,
       type: 'Aluno',
       externalAgentType: '',
       cnpj: '',
@@ -77,16 +80,16 @@ module.exports = {
     },
     alunoLoginWithoutemail: {
       email: '',
-      password: '123',
+      password,
     },
     loginUnexistingUser: {
       email: '',
-      password: '123',
+      password,
     },
     professor: {
       name: 'Mister M',
       email: 'Mister M2@gmail.com',
-      repeatPassword: '123',
+      repeatpassword: password,
       matricula: 198298376,
       type: 'Professor',
       externalAgentType: '',
@@ -99,10 +102,10 @@ module.exports = {
     externalPhysical: {
       name: 'Vandor',
       email: 'vandoropadeiro3@gmail.com',
-      password: '123',
-      repeatPassword: '123',
+      password,
+      repeatpassword: password,
       matricula: '',
-      type: 'Agente Externo',
+      type: agenteExterno,
       externalAgentType: 'Pessoa Fisica',
       cnpj: '',
       cep: '',
@@ -112,10 +115,10 @@ module.exports = {
     externaljuridical: {
       name: 'Vandor',
       email: 'padariadovandor4@gmail.com',
-      password: '123',
-      repeatPassword: '123',
+      password,
+      repeatpassword: password,
       matricula: '',
-      type: 'Agente Externo',
+      type: agenteExterno,
       externalAgentType: 'Pessoa Juridica',
       cnpj: '12345678901234',
       cep: '12345678',
