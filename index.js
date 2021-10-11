@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-environment.configUser();
+environment.configEnv();
 
 require('./src/routes/router')(app);
 
