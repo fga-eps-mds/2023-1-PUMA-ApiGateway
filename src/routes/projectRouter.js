@@ -1,10 +1,10 @@
 const projectController = require('../controller/projectController');
+const authentication = require('../utils/authentication');
 const express = require('express');
 
 const router = express.Router();
 
-router.get('/alocated/:subjectId', (req, res) => {
-
+router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, res) => {
   projectController.getAlocated(req.params).then((response) => {
     res.status(200).json(response.data);
   }).catch((err) => {

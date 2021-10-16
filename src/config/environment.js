@@ -5,7 +5,9 @@ module.exports = {
     if (process.env.ENVIRONMENT === 'dev') {
       global.URL_USER = `http://${process.env.IP_ADDRESS}:3001`;
       global.URL_PROJECT = `http://${process.env.IP_ADDRESS}:3000`
-      global.SECRET = process.env.SECRET;
+      global.STUDENT_SECRET = process.env.STUDENT_SECRET;
+      global.PROFESSOR_SECRET = process.env.PROFESSOR_SECRET;
+      global.AGENT_SECRET = process.env.AGENT_SECRET;
     } else if (process.env.ENVIRONMENT === 'test') {
       global.URL_GATEWAY = `http://${process.env.IP_ADDRESS}:3004`;
       global.URL_USER = `http://${process.env.IP_ADDRESS}:3001`;
