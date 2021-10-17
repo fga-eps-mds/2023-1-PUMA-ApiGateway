@@ -1,43 +1,28 @@
 const jwt = require('jsonwebtoken');
 
+function authenticate(auth, authorizedTypes) {
+  let decodedUser;
+  try {
+    decodedUser = jwt.verify(auth, global.SECRET);
+  } catch (e) {
+    return false;
+  }
+  console.log(authorizedTypes.includes(decodedUser.userType))
+  
+  if (authorizedTypes.includes(decodedUser.userType)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 module.exports = {
   authenticateProfessor: (req, res, next) => {
-    if(this.authenticate(['Professor'], req.headers['auth'])) {
+    if (authenticate(req.headers['auth'], ['Professor'])) {
       next();
     } else {
       return res.status(403).json({ message: 'Forbidden' });
     }
 
-  },
-  authenticate: async (authorizedTypes, auth) => {
-    for (type in authorizedTypes) {
-      switch (type) {
-        case 'Aluno':
-          try {
-            if (jwt.verify(auth, global.STUDENT_SECRET)) {
-              return true;
-            }
-          } catch (e) {
-          }
-          break;
-        case 'Professor':
-          try {
-            if (jwt.verify(auth, global.PROFESSOR_SECRET)) {
-              return true;
-            }
-          } catch (e) {
-          }
-          break;
-        case 'Agente Externo':
-          try {
-            if (jwt.verify(auth, global.AGENT_SECRET)) {
-              return true;
-            }
-          } catch (e) {
-          }
-          break;
-      }
-    }
-    return false;
   }
 }

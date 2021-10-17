@@ -16,32 +16,19 @@ module.exports = {
       });
     });
   },
-  logUserIn: (body) => {
+
+  logUserIn: async (body) => {
     const userUrl = `${global.URL_USER}/login`;
-    const reqBody = body;
-    // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async (resolve, reject) => {
-      try {
-        let {userId, userType} = await axios.post(userUrl, reqBody);
-        userId = userId.data;
-        let token;
-        switch(userType) {
-          case 'Aluno':
-            token = jwt.sign({ userId }, global.STUDENT_SECRET, { expiresIn: 604800 });
-            break;
-          case 'Professor':
-            token = jwt.sign({ userId }, global.PROFESSOR_SECRET, { expiresIn: 604800 });
-            break;
-          case 'Agente Externo':
-            token = jwt.sign({ userId }, global.AGENT_SECRET, { expiresIn: 604800 });
-            break;
-        }
-        resolve(token);
-      } catch (e) {
-        reject(e);
-      }
-    });
+    try {
+      const response = await axios.post(userUrl, body);
+      const {userId, userType} = response.data;
+      const token = jwt.sign({ userId, userType }, global.SECRET, { expiresIn: 604800 });
+      return token;
+    } catch (e) {
+      throw(e);
+    }
   },
+
   getAluno: (matriculaIdParam) => {
     const URL = `${global.URL_USER}/aluno:matriculaId`;
     const matriculaId = matriculaIdParam;
