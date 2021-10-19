@@ -20,5 +20,15 @@ module.exports = {
         reject(error);
       });
     });
+  },
+  putAlocated: (body) => {
+    const projUrl = `${global.URL_PROJECT}/alocated/status`;
+    return new Promise((resolve, reject) => {
+      axios.put(projUrl, body).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
   }
 };
