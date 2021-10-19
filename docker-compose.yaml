@@ -15,6 +15,8 @@ services:
             - puma-network
     project-service:
         container_name: project-service
+        environment:
+            ENVIRONMENT: dev
         build:
             context: ../${PROJECT_PATH}/
             dockerfile: dev.Dockerfile
@@ -29,6 +31,8 @@ services:
             - puma-network
     user-service:
         container_name: user-service
+        environment:
+            ENVIRONMENT: dev
         build:
             context: ../${USER_PATH}/
             dockerfile: dev.Dockerfile
@@ -43,6 +47,8 @@ services:
             - puma-network
     alocate-service:
         container_name: alocate-service
+        environment:
+            ENVIRONMENT: dev
         build:
             context: ../${ALOCATE_PATH}
             dockerfile: dev.Dockerfile
@@ -57,6 +63,8 @@ services:
             - puma-network
     notify-service:
         container_name: notify-service
+        environment:
+            ENVIRONMENT: dev
         build:
             context: ../${NOTIFY_PATH}/
             dockerfile: dev.Dockerfile
@@ -71,6 +79,8 @@ services:
             - puma-network
     api-gateway:
         container_name: api-gateway
+        environment:
+            ENVIRONMENT: dev
         build:
             context: .
             dockerfile: dev.Dockerfile
@@ -83,6 +93,8 @@ services:
             - puma-network
     frontend:
         container_name: frontend
+        environment:
+            ENVIRONMENT: dev
         build:
             context: ../${FRONT_PATH}/puma
             dockerfile: dev.Dockerfile
