@@ -30,5 +30,15 @@ module.exports = {
         reject(error);
       });
     });
-  }
+  },
+  getAllSubjects: (body) =>{
+    const projUrl = `${global.URL_PROJECT}/subject`;
+    return new Promise((resolve, reject) => {
+      axios.get(projUrl).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };

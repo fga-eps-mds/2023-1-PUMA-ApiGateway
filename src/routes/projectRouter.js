@@ -20,7 +20,7 @@ router.put('/alocated/status', authentication.authenticateProfessor, (req, res) 
   })
 })
 
-router.get('/:projectId', (req, res) => {
+router.get('/project/:projectId', (req, res) => {
 
   projectController.getProject(req.params).then((response) => {
     res.status(200).json(response.data);
@@ -28,5 +28,13 @@ router.get('/:projectId', (req, res) => {
     res.status(400).json({'msg': err});
   });
 });
+
+router.get('/subject', (req, res) => {
+  projectController.getAllSubjects(req.body).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((err) => {
+    res.status(400).json({'msg': err});
+  });
+})
 
 module.exports = router
