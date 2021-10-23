@@ -4,7 +4,7 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, res) => {
+router.get('/alocated/:subjectId', (req, res) => {
   projectController.getAlocated(req.params).then((response) => {
     res.status(200).json(response.data);
   }).catch((err) => {
@@ -12,7 +12,7 @@ router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, r
   });
 });
 
-router.put('/alocated/status', authentication.authenticateProfessor, (req, res) => {
+router.put('/alocated/status', (req, res) => {
   projectController.putAlocated(req.body).then((response) => {
     res.status(200).json(response.data)
   }).catch(err => {
@@ -35,6 +35,14 @@ router.get('/subject', (req, res) => {
   }).catch((err) => {
     res.status(400).json({'msg': err});
   });
-})
+});
+
+router.put('/proposal/:projectId', (req, res) => {
+  projectController.putProposal(req).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((err) => {
+    res.status(400).json({'msg': err});
+  });
+});
 
 module.exports = router

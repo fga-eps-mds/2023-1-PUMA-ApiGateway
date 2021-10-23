@@ -41,4 +41,15 @@ module.exports = {
       });
     });
   },
+  putProposal: (req) => {
+    const projId = req.params.projectId;
+    const projUrl = `${global.URL_PROJECT}/proposal/${projId}`;
+    return new Promise((resolve, reject) => {
+      axios.put(projUrl, req.body).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  }
 };
