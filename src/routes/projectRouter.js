@@ -45,4 +45,12 @@ router.put('/proposal/:projectId', (req, res) => {
   });
 });
 
+router.put('/alocate/:projectId/status', (req, res) => {
+  projectController.putProposalStatus(req).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((err) => {
+    res.status(400).json(err);
+  });
+});
+
 module.exports = router

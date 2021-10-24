@@ -51,5 +51,17 @@ module.exports = {
         reject(error);
       });
     });
-  }
+  },
+  putProposalStatus: (req) => {
+    const projId = req.params.projectId;
+    const projUrl = `${global.URL_PROJECT}/alocate/${projId}/status`;
+
+    return new Promise((resolve, reject) => {
+      axios.put(projUrl, req.body).then((response) => {
+        resolve(response);
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  },
 };
