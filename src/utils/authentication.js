@@ -4,6 +4,8 @@ function authenticate(auth, authorizedTypes) {
   let decodedUser;
   try {
     decodedUser = jwt.verify(auth, global.SECRET);
+    console.log('fewfw ')
+    console.log(decodedUser)
   } catch (e) {
     return false;
   }
@@ -19,6 +21,14 @@ function authenticate(auth, authorizedTypes) {
 module.exports = {
   authenticateProfessor: (req, res, next) => {
     if (authenticate(req.headers['auth'], ['Professor'])) {
+      next();
+    } else {
+      return res.status(403).json({ message: 'Forbidden' });
+    }
+
+  },
+  authenticateAny: (req, res, next) => {
+    if (authenticate(req.headers['auth'], ['Professor', 'Aluno', 'Agente Externo'])) {
       next();
     } else {
       return res.status(403).json({ message: 'Forbidden' });
