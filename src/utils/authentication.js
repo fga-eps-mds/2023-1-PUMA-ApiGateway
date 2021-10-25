@@ -10,7 +10,7 @@ function authenticate(auth, authorizedTypes) {
     return false;
   }
   console.log(authorizedTypes.includes(decodedUser.userType))
-  
+
   if (authorizedTypes.includes(decodedUser.userType)) {
     return true;
   } else {

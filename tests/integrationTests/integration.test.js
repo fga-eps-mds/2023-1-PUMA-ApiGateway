@@ -6,12 +6,15 @@ environment.configEnv();
 
 const users = require('./constants');
 
-const registerUrl = `${global.URL_GATEWAY}/register`;
-const loginUrl = `${global.URL_GATEWAY}/login`;
+const registerUrl = `${global.URL_GATEWAY}/user/register`;
+const loginUrl = `${global.URL_GATEWAY}/user/login`;
+const projectUrl = `${global.URL_GATEWAY}/project`
 
 const failedToRegisterMessage = 'Failed to register';
 const userWasRegisteredMessage = 'User was Registered';
 const failedToLoginMessage = 'Failed to login';
+
+let auth = '';
 
 describe('Register Success', () => {
   it('Should register Aluno', (done) => {
@@ -94,6 +97,7 @@ describe('Login', () => {
   it('Should Login Professor', (done) => {
     axios.post(loginUrl, users.success.professor).then((response) => {
       assert.equal(response.data.auth, true);
+      auth = response.data.token;
       done();
     }).catch((response) => {
       console.log(users.success.professor);
@@ -146,5 +150,26 @@ describe('Login Fail', () => {
       assert.equal(response.response.data.auth, false);
       done();
     });
+  });
+});
+
+describe('Evaluate proposal', () => {
+  it('Should accept proposal', (done) => {
+    axios.put(`${projectUrl}/alocate/1/status`,
+      { proposal: { approved: true } },
+      { headers: { auth: auth } }).then((response) => {
+      done();
+    }).catch((error) => {
+      done(new Error(error));
+    })
+  });
+
+  it('Should realocate proposal', (done) => {
+    axios.put(`${projectUrl}/proposal/2`, { subjectId: 2 },
+      { headers: { auth: auth } }).then((response) => {
+    done();
+  }).catch((error) => {
+    done(new Error(error));
+  });
   });
 });

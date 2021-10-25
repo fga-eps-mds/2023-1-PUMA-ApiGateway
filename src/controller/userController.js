@@ -22,6 +22,7 @@ module.exports = {
     try {
       const response = await axios.post(userUrl, body);
       const {userId, userType} = response.data;
+      console.log(userId, userType);
       const token = jwt.sign({ userId, userType }, global.SECRET, { expiresIn: 604800 });
       return token;
     } catch (e) {

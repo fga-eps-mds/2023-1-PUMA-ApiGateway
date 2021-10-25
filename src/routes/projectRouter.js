@@ -50,8 +50,8 @@ router.put('/alocate/:projectId/status', authentication.authenticateProfessor, (
     console.log('vai ser 200');
     res.status(200).json(response.data);
   }).catch((err) => {
-    console.log('vai ser 400');
-    res.status(400).json(err);
+    console.log(err);
+    res.status(400).json({ msg: err, hehe: 'foi o gay'});
   });
 });
 
