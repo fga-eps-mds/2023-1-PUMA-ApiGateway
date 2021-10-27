@@ -19,7 +19,7 @@ module.exports = {
     },
     professor: {
       name: 'Mister M',
-      email: 'Mister M@gmail.com',
+      email: 'MisterM@gmail.com',
       password,
       repeatpassword: password,
       matricula: 198298376,
