@@ -7,18 +7,18 @@ const projUrlputProposal = `${global.URL_PROJECT}/proposal/`;
 const projUrlputProposalStatus = `${global.URL_PROJECT}/alocate/`;
 
 module.exports = {
-  getAlocated: (body) => {
+  getAlocated: (subjectId) => {
     return new Promise((resolve, reject) => {
-      axios.get(projUrlgetAlocated + body.subjectId).then((response) => {
+      axios.get(projUrlgetAlocated + subjectId).then((response) => {
         resolve(response);
       }).catch((error) => {
         reject(error);
       });
     });
   },
-  getProject: (body) => {
+  getProject: (projectId) => {
     return new Promise((resolve, reject) => {
-      axios.get(projUrlgetProject + body.projectId).then((response) => {
+      axios.get(projUrlgetProject + projectId).then((response) => {
         resolve(response);
       }).catch((error) => {
         reject(error);
@@ -43,20 +43,18 @@ module.exports = {
       });
     });
   },
-  putProposal: (req) => {
-    const projId = req.params.projectId;
+  putProposal: (projectId, body) => {
     return new Promise((resolve, reject) => {
-      axios.put(projUrlputProposal + projId, req.body).then((response) => {
+      axios.put(projUrlputProposal + projectId, body).then((response) => {
         resolve(response);
       }).catch((error) => {
         reject(error);
       });
     });
   },
-  putProposalStatus: (req) => {
-    const projId = req.params.projectId;
+  putProposalStatus: (projectId, body) => {
     return new Promise((resolve, reject) => {
-      axios.put(projUrlputProposalStatus + projId + '/status', req.body).then((response) => {
+      axios.put(projUrlputProposalStatus + projectId + '/status', body).then((response) => {
         resolve(response);
       }).catch((err) => {
         reject(err);
