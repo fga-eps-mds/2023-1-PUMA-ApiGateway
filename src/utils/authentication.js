@@ -21,7 +21,7 @@ module.exports = {
     } else {
       return res.status(403).json({ message: 'Forbidden' });
     }
-    return res.status(403).json({ message: 'Forbidden' });
+    return;
   },
   authenticateAny: (req, res, next) => {
     if (authenticate(req.headers.auth, ['Professor', 'Aluno', 'Agente Externo'])) {
@@ -29,6 +29,6 @@ module.exports = {
     } else {
       return res.status(403).json({ message: 'Forbidden' });
     }
-    return res.status(403).json({ message: 'Forbidden' });
+    return;
   },
 };
