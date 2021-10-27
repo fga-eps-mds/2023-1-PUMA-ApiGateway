@@ -1,5 +1,5 @@
-const userController = require('../controller/userController');
 const express = require('express');
+const userController = require('../controller/userController');
 
 const router = express.Router();
 
@@ -25,4 +25,4 @@ router.get('/aluno/:matriculaId', (req, res) => {
   });
 });
 
-module.exports = router
+module.exports = router;

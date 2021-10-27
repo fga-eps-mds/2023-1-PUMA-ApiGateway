@@ -37,7 +37,7 @@ module.exports = {
       }
     });
   },
-  getAllSubjects: (body) => {
+  getAllSubjects: () => {
     const projUrl = `${global.URL_PROJECT}/subject`;
     return new Promise((resolve, reject) => {
       if (projUrl) {
@@ -54,7 +54,6 @@ module.exports = {
     const projUrl = `${global.URL_PROJECT}/proposal/${projId}`;
     return new Promise((resolve, reject) => {
       if (projUrl) {
-
         axios.put(projUrl, req.body).then((response) => {
           resolve(response);
         }).catch((error) => {

@@ -2,52 +2,52 @@ module.exports = [
   {
     endpoint: '/register',
     type: 'POST',
-    args:[
+    args: [
       {
         name: 'name',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'email',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'password',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'matricula',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'type',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'externalAgentType',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'cnpj',
-        type: 'char'
+        type: 'char',
       },
       {
         name: 'cep',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'companyName',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'socialReason',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'cpf',
-        type: 'string'
-      }
-    ]
+        type: 'string',
+      },
+    ],
   },
   {
     endpoint: '/login',
@@ -55,13 +55,13 @@ module.exports = [
     args: [
       {
         name: 'email',
-        type: 'string'
+        type: 'string',
       },
       {
         name: 'password',
-        type: 'string'
-      }
-    ]
+        type: 'string',
+      },
+    ],
   },
   {
     endpoint: '/alocated',
@@ -69,8 +69,8 @@ module.exports = [
     args: [
       {
         name: 'subjectId',
-        type: 'Int'
-      }
-    ]
-  }
-]
+        type: 'Int',
+      },
+    ],
+  },
+];

@@ -9,7 +9,7 @@ module.exports = {
     const userUrl = `${global.URL_USER}/register`;
     const reqBody = body;
     return new Promise((resolve, reject) => {
-       axios.post(userUrl, reqBody).then((response) => {
+      axios.post(userUrl, reqBody).then((response) => {
         resolve(response);
       }).catch((error) => {
         reject(error);
@@ -19,15 +19,10 @@ module.exports = {
 
   logUserIn: async (body) => {
     const userUrl = `${global.URL_USER}/login`;
-    try {
-      const response = await axios.post(userUrl, body);
-      const {userId, userType} = response.data;
-      console.log(userId, userType);
-      const token = jwt.sign({ userId, userType }, global.SECRET, { expiresIn: 604800 });
-      return token;
-    } catch (e) {
-      throw(e);
-    }
+    const response = await axios.post(userUrl, body);
+    const { userId, userType } = response.data;
+    const token = jwt.sign({ userId, userType }, global.SECRET, { expiresIn: 604800 });
+    return token;
   },
 
   getAluno: (matriculaIdParam) => {

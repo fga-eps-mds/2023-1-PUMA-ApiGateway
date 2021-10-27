@@ -1,5 +1,5 @@
 const express = require('express');
-const endpoints = require('../utils/endpoints.js')
+const endpoints = require('../utils/endpoints');
 const userRouter = require('./userRouter');
 const projectRouter = require('./projectRouter');
 
@@ -7,11 +7,9 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   res.json(
-    endpoints
+    endpoints,
   );
 });
-
-
 
 module.exports = (app) => {
   // app.use('/', [router, userRouter, projectRouter]);
