@@ -22,7 +22,7 @@ module.exports = {
     const response = await axios.post(userUrl, body);
     const { userId, userType } = response.data;
     const token = jwt.sign({ userId, userType }, global.SECRET, { expiresIn: 604800 });
-    return token;
+    return {token: token, type: userType};
   },
 
   getAluno: (matriculaIdParam) => {

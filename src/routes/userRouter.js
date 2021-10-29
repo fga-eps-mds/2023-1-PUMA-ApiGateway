@@ -12,8 +12,8 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  userController.logUserIn(req.body).then((token) => {
-    res.status(200).json({ auth: true, token });
+  userController.logUserIn(req.body).then((user) => {
+    res.status(200).json({ auth: true, token: user.token, type: user.type });
   }).catch((error) => {
     res.status(400).json({ auth: false, token: null, error });
   });
