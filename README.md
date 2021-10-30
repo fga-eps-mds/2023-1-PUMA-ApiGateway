@@ -1,5 +1,6 @@
 # 2021-1-PUMA-ApiGateway
-
+![Build Status](https://dev.azure.com/puma-eps/Puma/_apis/build/status/UserService-CI?branchName=104-ci-pipes)
+![Azure DevOps coverage](https://img.shields.io/azure-devops/coverage/puma-eps/Puma/6?style=flat-square)
 ## Objetivo
 
 Esse serviço é responsável em fazer o tratamento das requisições entre os microsserviços [NotifyService](https://github.com/fga-eps-mds/2021-1-PUMA-NotifyService), [AlocateService](https://github.com/fga-eps-mds/2021-1-PUMA-AlocateService), [ProjectService](https://github.com/fga-eps-mds/2021-1-PUMA-ProjectService), [UserService](https://github.com/fga-eps-mds/2021-1-PUMA-UserService).
