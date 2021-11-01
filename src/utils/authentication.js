@@ -31,4 +31,9 @@ module.exports = {
     }
     return;
   },
+  getUserId: (auth) => {
+    console.log(auth)
+    console.log(jwt.verify(auth, global.SECRET))
+    return jwt.verify(auth, global.SECRET).userId;
+  },
 };

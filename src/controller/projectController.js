@@ -1,4 +1,5 @@
 const axios = require('axios');
+const authentication = require('../utils/authentication');
 const projUrlgetAlocated = `${global.URL_PROJECT}/alocated/`;
 const projUrlgetProject = `${global.URL_PROJECT}/project/`;
 const projUrlputAlocated = `${global.URL_PROJECT}/alocated/status`;
@@ -62,10 +63,12 @@ module.exports = {
     });
   },
 
-  addProject: (body) => {
+  addProject: (req) => {
     const projectUrl = `${global.URL_PROJECT}/project`;
-    const reqBody = body;
+    const reqBody = req.body;
     return new Promise((resolve, reject) => {
+      reqBody.userid = authentication.getUserId(req.headers.auth);
+
       axios.post(projectUrl, reqBody).then((response) => {
         resolve(response);
       }).catch((error) => {
@@ -73,9 +76,9 @@ module.exports = {
       });
     });
   },
-  addFile: (body) => {
+  addFile: (req) => {
     const projectUrl = `${global.URL_PROJECT}/upload`;
-    const reqBody = body;
+    const reqBody = req.body;
     return new Promise((resolve, reject) => {
       axios.post(projectUrl, reqBody).then((response) => {
         resolve(response);
