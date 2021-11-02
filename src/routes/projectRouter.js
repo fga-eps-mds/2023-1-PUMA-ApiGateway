@@ -12,6 +12,14 @@ router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, r
   });
 });
 
+router.get('/myProposals', authentication.authenticateAny, (req, res) => {
+  projectController.getMyProposals(req.headers.auth).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((err) => {
+    res.status(400).json({ msg: err });
+  });
+});
+
 router.put('/alocated/status', authentication.authenticateProfessor, (req, res) => {
   projectController.putAlocated(req.body).then((response) => {
     res.status(200).json(response.data);
