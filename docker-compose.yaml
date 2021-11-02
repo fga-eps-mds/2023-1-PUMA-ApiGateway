@@ -2,6 +2,7 @@ version: "3"
 services:
     db:
         image: postgres
+        container_name: db
         environment:
             POSTGRES_PASSWORD: ${DB_PASS}
             POSTGRES_USER: ${DB_USER}

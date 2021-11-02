@@ -1,10 +1,12 @@
 const axios = require('axios');
+const authentication = require('../utils/authentication');
 const projUrlgetAlocated = `${global.URL_PROJECT}/alocated/`;
 const projUrlgetProject = `${global.URL_PROJECT}/project/`;
 const projUrlputAlocated = `${global.URL_PROJECT}/alocated/status`;
 const projUrlgetAllSubjects = `${global.URL_PROJECT}/subject`;
 const projUrlputProposal = `${global.URL_PROJECT}/proposal/`;
 const projUrlputProposalStatus = `${global.URL_PROJECT}/alocate/`;
+const projUrlgetMyProposals = `${global.URL_PROJECT}/userProposals/`;
 
 module.exports = {
   getAlocated: (subjectId) => {
@@ -15,6 +17,10 @@ module.exports = {
         reject(error);
       });
     });
+  },
+  getMyProposals: async (auth) => {
+    const userId = authentication.getUserId(auth);
+    return axios.get(projUrlgetMyProposals + userId);
   },
   getProject: (projectId) => {
     return new Promise((resolve, reject) => {
@@ -58,6 +64,40 @@ module.exports = {
         resolve(response);
       }).catch((err) => {
         reject(err);
+      });
+    });
+  },
+  addProject: (req) => {
+    const projectUrl = `${global.URL_PROJECT}/project`;
+    const reqBody = req.body;
+    return new Promise((resolve, reject) => {
+      reqBody.userid = authentication.getUserId(req.headers.auth);
+
+      axios.post(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+  addFile: (req) => {
+    const projectUrl = `${global.URL_PROJECT}/upload`;
+    const reqBody = req.body;
+    return new Promise((resolve, reject) => {
+      axios.post(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+  deleteProject: (projectIdParam) => {
+    const projectUrl = `${global.URL_PROJECT}/project/`;
+    return new Promise((resolve, reject) => {
+      axios.delete(projectUrl + projectIdParam).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
       });
     });
   },
