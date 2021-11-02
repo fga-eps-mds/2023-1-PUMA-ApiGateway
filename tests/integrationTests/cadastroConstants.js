@@ -3,11 +3,7 @@ const areasConhecimento = global.URL_GATEWAY
 module.exports = {
   success: {
     projeto: {
-      titulo: 'Chove Mamonas no Gama?',
-      descricao: 'Estudo relacionado a decorrencia de chuvas de mamonas que estão caindo no matagal do setor sul do Gama',
-      resultadoEsperado: 'Descobrir o mistério por trás dessas chuvas de mamonas',
-      areasConhecimento,
-      repeatAreasConhecimento: areasConhecimento
+      name: "asdasd", problem: "asdasd", expectedresult: "asdasd", status: "Em alocacao", subjectid: 1, userid: 1, isLoading: false, knowledgeareas: [{ knowledgearea: "Probabilidade e Estatística", knowledgeareaid: 1 }, { knowledgearea: "Engenharia do Produto", knowledgeareaid: 5 }, { knowledgearea: "Gestão da Qualidade", knowledgeareaid: 4 }]
     }
   },
 

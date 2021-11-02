@@ -16,7 +16,7 @@ const failedToLoginMessage = 'Failed to login';
 
 const cadastroProjects = require('./cadastroConstants');
 
-const cadastroProjectsUrl = `${global.URL_GATEWAY}/projeto/cadastro`;
+const cadastroProjectsUrl = `${global.URL_GATEWAY}/project`;
 
 const failedToRegisterProject = 'Failed to register the project';
 const failedToRegisterProjectBy1 = 'Failed to register the project, titulo was not found';
@@ -185,10 +185,12 @@ describe('Evaluate proposal', () => {
 
 describe('Register Project Success', () => {
   it('Should register Projeto', (done) => {
-    axios.post(cadastroProjectsUrl, cadastroProjects.success.projeto).then(() => {
+    axios.post(cadastroProjectsUrl, cadastroProjects.success.projeto,
+      { headers: { auth } }).then(() => {
       done();
-    }).catch(() => {
-      done(new Error(failedToRegisterProject));
+    }).catch((shit) => {
+      console.log(shit);
+      done(new Error(shit));
     });
   });
 });
