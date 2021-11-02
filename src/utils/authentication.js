@@ -31,4 +31,7 @@ module.exports = {
     }
     return;
   },
+  getUserId: (auth) => {
+    return jwt.verify(auth, global.SECRET).userId;
+  },
 };

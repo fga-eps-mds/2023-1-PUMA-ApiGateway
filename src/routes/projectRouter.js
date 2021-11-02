@@ -12,6 +12,14 @@ router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, r
   });
 });
 
+router.get('/myProposals', authentication.authenticateAny, (req, res) => {
+  projectController.getMyProposals(req.headers.auth).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((err) => {
+    res.status(400).json({ msg: err });
+  });
+});
+
 router.put('/alocated/status', authentication.authenticateProfessor, (req, res) => {
   projectController.putAlocated(req.body).then((response) => {
     res.status(200).json(response.data);
@@ -49,6 +57,34 @@ router.put('/alocate/:projectId/status', authentication.authenticateProfessor, (
     res.status(200).json(response.data);
   }).catch((err) => {
     res.status(400).json({ msg: err, hehe: 'foi o gay' });
+  });
+});
+
+router.post('/', authentication.authenticateAny, (req, res) => {
+  projectController.addProject(req).then((response) => {
+    const { data } = response;
+    res.status(200).json({ data });
+  }).catch((error) => {
+    console.log(error);
+    res.status(400).json({ error });
+  });
+});
+
+router.post('/upload', authentication.authenticateAny, (req, res) => {
+  projectController.addFile(req).then((response) => {
+    const { data } = response;
+    res.status(200).json({ data });
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.delete('/delete/:projectId', authentication.authenticateAny, (req, res) => {
+  projectController.deleteProject(req.params.projectId).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    console.log(error)
+    res.status(400).json({msg: 'deu erro'});
   });
 });
 
