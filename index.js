@@ -6,7 +6,8 @@ environment.configEnv();
 
 const app = express();
 const corsOptions = {
-  origin: `${global.URL_HOM}`,
+  // origin: `${global.URL_HOM}`,
+  origin: '*',
 };
 
 app.use(cors(corsOptions));
