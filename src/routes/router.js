@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 module.exports = (app) => {
   // app.use('/', [router, userRouter, projectRouter]);
   app.use('/', [router]);
-  app.use('/', [userRouter]);
+  app.use('/user', [userRouter]);
   app.use('/project', [projectRouter]);
   app.use('/areas-conhecimento', [knowledgeAreaRouter]);
 };
