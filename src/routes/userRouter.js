@@ -25,4 +25,10 @@ router.get('/aluno/:matriculaId', (req, res) => {
   });
 });
 
+router.get('/initial', (req, res) => {
+  userController.initial().then((response) => {
+    res.status(200).json(response);
+  });
+});
+
 module.exports = router;

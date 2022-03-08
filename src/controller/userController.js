@@ -22,7 +22,7 @@ module.exports = {
     const response = await axios.post(userUrl, body);
     const { userId, userType } = response.data;
     const token = jwt.sign({ userId, userType }, global.SECRET, { expiresIn: 604800 });
-    return {token: token, type: userType};
+    return { token, type: userType };
   },
 
   getAluno: (matriculaIdParam) => {
@@ -30,6 +30,18 @@ module.exports = {
     const matriculaId = matriculaIdParam;
     return new Promise((resolve) => {
       axios.get(URL, matriculaId).then((res) => {
+        resolve(res.data);
+      });
+    }).catch(() => {
+      // eslint-disable-next-line no-undef
+      resolve(JSON.parse('{"cod": 400}'));
+    });
+  },
+
+  initial: () => {
+    const URL = `${global.URL_USER}`;
+    return new Promise((resolve) => {
+      axios.get(URL).then((res) => {
         resolve(res.data);
       });
     }).catch(() => {
