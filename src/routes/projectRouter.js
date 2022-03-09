@@ -88,4 +88,12 @@ router.delete('/delete/:projectId', authentication.authenticateAny, (req, res) =
   });
 });
 
+router.get('/initial', (req, res) => {
+  projectController.initial().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((err) => {
+    res.status(400).json({ msg: err });
+  });
+});
+
 module.exports = router;
