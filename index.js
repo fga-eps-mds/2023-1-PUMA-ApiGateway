@@ -15,9 +15,12 @@ app.use(cors(corsOptions));
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 
-
 require('./src/routes/router')(app);
 
-app.listen(3004);
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
+  console.log(`Server running on PORT: ${PORT}`);
+});
 
 module.exports = app;
