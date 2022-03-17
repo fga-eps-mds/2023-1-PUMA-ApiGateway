@@ -20,12 +20,12 @@ module.exports = {
   logUserIn: async (body) => {
     const userUrl = `${global.URL_USER}/login`;
     const response = await axios.post(userUrl, body);
-    const { userId, userType } = response.data;
-    const token = jwt.sign({ userId, userType }, global.SECRET, { expiresIn: 604800 });
-    return { token, type: userType };
+    const { userId, type } = response.data;
+    const token = jwt.sign({ userId, userType: type }, global.SECRET, { expiresIn: 604800 });
+    return { token, ...response.data };
   },
 
-  getAluno: (matriculaIdParam) => {
+  getStudent: (matriculaIdParam) => {
     const URL = `${global.URL_USER}/aluno:matriculaId`;
     const matriculaId = matriculaIdParam;
     return new Promise((resolve) => {
