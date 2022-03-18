@@ -49,4 +49,28 @@ module.exports = {
       resolve(JSON.parse('{"cod": 400}'));
     });
   },
+
+  updatePassword: (param) => {
+    const userUrl = `${global.URL_USER}/password/${param.email}`;
+    const reqBody = param;
+    return new Promise((resolve, reject) => {
+      axios.put(userUrl, reqBody).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
+  recoverPassword: (body) => {
+    const userUrl = `${global.URL_USER}/recover`;
+    const reqBody = body;
+    return new Promise((resolve, reject) => {
+      axios.post(userUrl, reqBody).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };
