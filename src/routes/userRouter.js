@@ -5,22 +5,22 @@ const router = express.Router();
 
 router.post('/register', (req, res) => {
   userController.registerUser(req.body).then(() => {
-    res.status(200).json({ });
+    res.status(200).json({});
   }).catch(() => {
-    res.status(400).json({ });
+    res.status(400).json({});
   });
 });
 
 router.post('/login', (req, res) => {
-  userController.logUserIn(req.body).then((user) => {
-    res.status(200).json({ auth: true, token: user.token, type: user.type });
+  userController.logUserIn(req.body).then((userData) => {
+    res.status(200).json({ auth: true, ...userData });
   }).catch((error) => {
     res.status(400).json({ auth: false, token: null, error });
   });
 });
 
 router.get('/aluno/:matriculaId', (req, res) => {
-  userController.getAluno(req.params.matriculaId).then((response) => {
+  userController.getStudent(req.params.matriculaId).then((response) => {
     res.json(response);
   });
 });

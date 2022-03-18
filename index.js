@@ -5,6 +5,7 @@ const environment = require('./src/config/environment');
 environment.configEnv();
 
 const app = express();
+
 const corsOptions = {
   // origin: `${global.URL_HOM}`,
   origin: '*',
