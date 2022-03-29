@@ -4,6 +4,16 @@ const authentication = require('../utils/authentication');
 
 const router = express.Router();
 
+router.post('/', authentication.authenticateAny, (req, res) => {
+  console.log('dasas');
+  projectController.addProject(req).then((response) => {
+    const { data } = response;
+    res.status(200).json({ data });
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
 router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, res) => {
   projectController.getAlocated(req.params.subjectId).then((response) => {
     res.status(200).json(response.data);
@@ -57,16 +67,6 @@ router.put('/alocate/:projectId/status', authentication.authenticateProfessor, (
     res.status(200).json(response.data);
   }).catch((error) => {
     res.status(400).json({ msg: err, hehe: 'foi o gay' });
-  });
-});
-
-router.post('/', authentication.authenticateAny, (req, res) => {
-  projectController.addProject(req).then((response) => {
-    const { data } = response;
-    res.status(200).json({ data });
-  }).catch((error) => {
-    console.log(error);
-    res.status(400).json({ error });
   });
 });
 

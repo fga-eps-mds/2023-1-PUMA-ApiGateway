@@ -61,7 +61,6 @@ module.exports = {
     const reqBody = req.body;
     return new Promise((resolve, reject) => {
       reqBody.userid = authentication.getUserId(req.headers.auth);
-
       axios.post(projectUrl, reqBody).then((response) => {
         resolve(response);
       }).catch((error) => {
