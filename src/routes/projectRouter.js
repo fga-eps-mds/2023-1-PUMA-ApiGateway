@@ -5,7 +5,6 @@ const authentication = require('../utils/authentication');
 const router = express.Router();
 
 router.post('/', authentication.authenticateAny, (req, res) => {
-  console.log('dasas');
   projectController.addProject(req).then((response) => {
     const { data } = response;
     res.status(200).json({ data });

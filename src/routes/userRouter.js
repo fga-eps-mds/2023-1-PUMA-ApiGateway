@@ -12,7 +12,6 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  console.log('chegeui');
   userController.logUserIn(req.body).then((userData) => {
     res.status(200).json({ auth: true, ...userData });
   }).catch((error) => {

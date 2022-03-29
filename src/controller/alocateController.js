@@ -16,8 +16,6 @@ module.exports = {
       axios.post(`${global.URL_ALOCATE}/alocate`, keywords).then((response) => {
         resolve(response);
       }).catch((error) => {
-        console.log(error);
-        // alert(error);
         reject(error);
       });
     });
