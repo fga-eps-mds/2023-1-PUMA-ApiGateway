@@ -22,7 +22,7 @@ router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, r
 });
 
 router.get('/myProposals', authentication.authenticateAny, (req, res) => {
-  projectController.getMyProposals(req.headers.auth).then((response) => {
+  projectController.getMyProposals(req).then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {
     res.status(400).json({ error });
@@ -37,7 +37,7 @@ router.put('/alocated/status', authentication.authenticateProfessor, (req, res) 
   });
 });
 
-router.get('/project/:projectId', authentication.authenticateProfessor, (req, res) => {
+router.get('/project/:projectId', authentication.authenticateAny, (req, res) => {
   projectController.getProject(req.params.projectId).then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {

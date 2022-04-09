@@ -17,9 +17,9 @@ module.exports = {
       reject(error);
     });
   }),
-  getMyProposals: async (auth) => {
-    const userId = authentication.getUserId(auth);
-    return axios.get(projUrlgetMyProposals + userId);
+  getMyProposals: async (req) => {
+    const userId = authentication.getUserId(req.headers.auth);
+    return axios.get(projUrlgetMyProposals + userId, { params: req.query });
   },
   getProject: (projectId) => new Promise((resolve, reject) => {
     axios.get(projUrlgetProject + projectId).then((response) => {
