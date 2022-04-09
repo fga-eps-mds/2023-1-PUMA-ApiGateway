@@ -68,6 +68,16 @@ module.exports = {
       });
     });
   },
+  getKeywords: () => {
+    const projectUrl = `${global.URL_PROJECT}/palavra-chave`;
+    return new Promise((resolve, reject) => {
+      axios.get(projectUrl).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
   addFile: (req) => {
     const projectUrl = `${global.URL_PROJECT}/upload`;
     const reqBody = req.body;

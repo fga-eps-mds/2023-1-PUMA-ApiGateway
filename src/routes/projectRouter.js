@@ -1,6 +1,7 @@
 const express = require('express');
 const projectController = require('../controller/projectController');
 const authentication = require('../utils/authentication');
+const alocateController = require('../controller/alocateController');
 
 const router = express.Router();
 
@@ -42,6 +43,14 @@ router.get('/project/:projectId', authentication.authenticateAny, (req, res) => 
     res.status(200).json(response.data);
   }).catch((error) => {
     res.status(400).json({ error });
+  });
+});
+
+router.get('/palavra-chave', (req, res) => {
+  projectController.getKeywords().then((response) => {
+    res.status(200).json(response.data);
+  }).catch(() => {
+    res.status(400).json({});
   });
 });
 
