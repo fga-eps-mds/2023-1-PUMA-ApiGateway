@@ -106,4 +106,31 @@ module.exports = {
       reject(error);
     });
   }),
+  getAvailableKeywordsToSubject: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subject/keywords`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+  getSubareas: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subareas`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+  addSubject: (data) => {
+    const projectUrl = `${global.URL_PROJECT}/subject`;
+    const reqBody = data;
+    return new Promise((resolve, reject) => {
+      axios.post(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };

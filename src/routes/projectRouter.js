@@ -104,4 +104,28 @@ router.get('/initial', (req, res) => {
   });
 });
 
+router.post('/subject', (req, res) => {
+  projectController.addSubject(req.body).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.get('/subject/keywords', (req, res) => {
+  projectController.getAvailableKeywordsToSubject().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.get('/subareas', (req, res) => {
+  projectController.getSubareas().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
 module.exports = router;
