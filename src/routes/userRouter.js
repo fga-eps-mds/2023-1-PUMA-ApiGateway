@@ -41,9 +41,13 @@ router.put('/password/:email', (req, res) => {
 
 router.post('/recover', (req, res) => {
   userController.recoverPassword(req.body).then((response) => {
-    res.status(200).json(response);
-  }).catch(() => {
-    res.status(400).json({ });
+    if (response.status === 404) {
+      res.status(404).json({ message: response.error });
+    } else {
+      res.status(200).json(response);
+    }
+  }).catch((err) => {
+    res.status(400).json({ err });
   });
 });
 

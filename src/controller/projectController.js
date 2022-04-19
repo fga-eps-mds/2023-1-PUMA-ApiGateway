@@ -17,9 +17,9 @@ module.exports = {
       reject(error);
     });
   }),
-  getMyProposals: async (auth) => {
-    const userId = authentication.getUserId(auth);
-    return axios.get(projUrlgetMyProposals + userId);
+  getMyProposals: async (req) => {
+    const userId = authentication.getUserId(req.headers.auth);
+    return axios.get(projUrlgetMyProposals + userId, { params: req.query });
   },
   getProject: (projectId) => new Promise((resolve, reject) => {
     axios.get(projUrlgetProject + projectId).then((response) => {
@@ -61,8 +61,17 @@ module.exports = {
     const reqBody = req.body;
     return new Promise((resolve, reject) => {
       reqBody.userid = authentication.getUserId(req.headers.auth);
-
       axios.post(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+  getKeywords: () => {
+    const projectUrl = `${global.URL_PROJECT}/palavra-chave`;
+    return new Promise((resolve, reject) => {
+      axios.get(projectUrl).then((response) => {
         resolve(response);
       }).catch((error) => {
         reject(error);

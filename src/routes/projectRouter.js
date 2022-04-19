@@ -1,8 +1,18 @@
 const express = require('express');
 const projectController = require('../controller/projectController');
 const authentication = require('../utils/authentication');
+const alocateController = require('../controller/alocateController');
 
 const router = express.Router();
+
+router.post('/', authentication.authenticateAny, (req, res) => {
+  projectController.addProject(req).then((response) => {
+    const { data } = response;
+    res.status(200).json({ data });
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
 
 router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, res) => {
   projectController.getAlocated(req.params.subjectId).then((response) => {
@@ -13,7 +23,7 @@ router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, r
 });
 
 router.get('/myProposals', authentication.authenticateAny, (req, res) => {
-  projectController.getMyProposals(req.headers.auth).then((response) => {
+  projectController.getMyProposals(req).then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {
     res.status(400).json({ error });
@@ -28,11 +38,19 @@ router.put('/alocated/status', authentication.authenticateProfessor, (req, res) 
   });
 });
 
-router.get('/project/:projectId', authentication.authenticateProfessor, (req, res) => {
+router.get('/project/:projectId', authentication.authenticateAny, (req, res) => {
   projectController.getProject(req.params.projectId).then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {
     res.status(400).json({ error });
+  });
+});
+
+router.get('/palavra-chave', (req, res) => {
+  projectController.getKeywords().then((response) => {
+    res.status(200).json(response.data);
+  }).catch(() => {
+    res.status(400).json({});
   });
 });
 
@@ -57,16 +75,6 @@ router.put('/alocate/:projectId/status', authentication.authenticateProfessor, (
     res.status(200).json(response.data);
   }).catch((error) => {
     res.status(400).json({ msg: err, hehe: 'foi o gay' });
-  });
-});
-
-router.post('/', authentication.authenticateAny, (req, res) => {
-  projectController.addProject(req).then((response) => {
-    const { data } = response;
-    res.status(200).json({ data });
-  }).catch((error) => {
-    console.log(error);
-    res.status(400).json({ error });
   });
 });
 
