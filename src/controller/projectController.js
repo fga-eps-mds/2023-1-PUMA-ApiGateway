@@ -3,7 +3,9 @@ const authentication = require('../utils/authentication');
 
 const projUrlGetAlocated = `${global.URL_PROJECT}/alocated/`;
 const projUrlGetProject = `${global.URL_PROJECT}/project/get/`;
+const projUrlPostProject = `${global.URL_PROJECT}/project/create`;
 const projUrlPutProject = `${global.URL_PROJECT}/project/update`;
+const projUrlDeleteProject = `${global.URL_PROJECT}/project/delete/`;
 const projUrlPutProjectEvaluate = `${global.URL_PROJECT}/project/evaluate`;
 const projUrlPutProjectReallocate = `${global.URL_PROJECT}/project/reallocate`;
 const projUrlPutAlocated = `${global.URL_PROJECT}/alocated/status`;
@@ -21,11 +23,10 @@ module.exports = {
   }),
 
   addProject: (req) => {
-    const projectUrl = `${global.URL_PROJECT}/project`;
     const reqBody = req.body;
     return new Promise((resolve, reject) => {
       reqBody.userid = authentication.getUserId(req.headers.auth);
-      axios.post(projectUrl, reqBody).then((response) => {
+      axios.post(projUrlPostProject, reqBody).then((response) => {
         resolve(response);
       }).catch((error) => {
         reject(error);
@@ -57,16 +58,24 @@ module.exports = {
     });
   }),
 
-  deleteProject: (projectIdParam) => {
-    const projectUrl = `${global.URL_PROJECT}/project/`;
+  deleteProject: (projectId) => {
     return new Promise((resolve, reject) => {
-      axios.delete(projectUrl + projectIdParam).then((response) => {
+      axios.delete(projUrlDeleteProject + projectId).then((response) => {
         resolve(response.data);
       }).catch((error) => {
         reject(error);
       });
     });
   },
+
+  getKeywordsAvailbleToProject: () => new Promise((resolve, reject) => {
+    const url = `${global.URL_PROJECT}/keywords`;
+    axios.get(url).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
 
   getKeywords: () => {
     const projectUrl = `${global.URL_PROJECT}/palavra-chave`;
@@ -135,4 +144,34 @@ module.exports = {
       reject(error);
     });
   }),
+
+  getAvailableKeywordsToSubject: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subject/keywords`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  getSubareas: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subareas`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  addSubject: (data) => {
+    const projectUrl = `${global.URL_PROJECT}/subject`;
+    const reqBody = data;
+    return new Promise((resolve, reject) => {
+      axios.post(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };
