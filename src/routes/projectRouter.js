@@ -128,4 +128,12 @@ router.get('/subareas', (req, res) => {
   });
 });
 
+router.get('/professors', (req, res) => {
+  projectController.getProfessors().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
 module.exports = router;

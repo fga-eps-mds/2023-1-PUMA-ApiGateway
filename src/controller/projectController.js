@@ -133,4 +133,12 @@ module.exports = {
       });
     });
   },
+  getProfessors: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/professors`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
 };
