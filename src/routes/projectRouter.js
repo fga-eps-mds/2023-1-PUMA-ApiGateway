@@ -46,13 +46,6 @@ router.get('/project/:projectId', authentication.authenticateAny, (req, res) => 
   });
 });
 
-router.get('/palavra-chave', (req, res) => {
-  projectController.getKeywords().then((response) => {
-    res.status(200).json(response.data);
-  }).catch(() => {
-    res.status(400).json({});
-  });
-});
 
 router.get('/subject', authentication.authenticateAny, (req, res) => {
   projectController.getAllSubjects(req.body).then((response) => {
@@ -129,3 +122,72 @@ router.get('/subareas', (req, res) => {
 });
 
 module.exports = router;
+
+
+// Palavras-Chave - CRUD
+router.get('/palavra-chave', (req, res) => {
+  projectController.getKeywords().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((response) => {
+    res.status(400).json({ response });
+  });
+});
+
+
+
+router.get('/palavra-chave2', (req, res) => {
+  projectController.getKeywordsAlternative().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((response) => {
+    res.status(400).json({ response });
+  });
+});
+
+
+// Body com campo Keyword necessário
+router.post('/palavra-chave', (req, res) => { // Falta tratamento dos dados
+  console.log('debug create',req.body);
+
+  projectController.addKeyword(req.body).then((response) => {
+    res.status(200).json({ 'deu bom': response });
+  }).catch((e) => {
+    res.status(400).json({ 'error': e});
+  });
+});
+
+
+
+
+
+// Body necessita da keywordid (id palavra chave a ser mudada) e newKeyword (nova palavra a ser atualizada)
+router.put('/palavra-chave/edit', (req, res) => {
+  const { body, params } = req;
+  
+  projectController.editKeyword(body).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((e) => {
+    res.status(400).json({ 'response': body, 'error': e });
+  });
+});
+
+// Parâmetro vai na url devido a deleção ser via update
+router.put('/palavra-chave/:keywordid/delete', (req, res) => {
+  const { body, params } = req;
+  console.log('Debug params', params);
+  projectController.deleteKeyword(params).then((response) => {
+
+    res.status(200).json(response.data);
+  }).catch((e) => {
+    res.status(400).json({ 'bruno': params, 'response': parseInt(params) });
+  });
+});
+
+// Body com campo Keyword necessário
+router.post('/palavra-chave', (req, res) => { // Falta tratamento dos dados
+  console.log('reqbody', req.body);
+  projectController.addKeyword(req.body).then((response) => {
+    res.status(200).json({ 'deu bom': response });
+  }).catch((e) => {
+    res.status(400).json({ 'error': e});
+  });
+});

@@ -70,6 +70,7 @@ module.exports = {
   },
   getKeywords: () => {
     const projectUrl = `${global.URL_PROJECT}/palavra-chave`;
+    console.log('Projecturl', projectUrl);
     return new Promise((resolve, reject) => {
       axios.get(projectUrl).then((response) => {
         resolve(response);
@@ -133,4 +134,65 @@ module.exports = {
       });
     });
   },
+
+  editKeyword: (data) => {
+    // console.log('Chegou no Gateway');
+    const projectUrl = `${global.URL_PROJECT}/palavra-chave/edit`;
+    const reqBody = data;
+    return new Promise((resolve, reject) => {
+      axios.put(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        console.log('erro',error);
+        reject(error);
+      });
+    });
+  },
+
+  deleteKeyword: (data) => {
+    const projectUrl = `${global.URL_PROJECT}/palavra-chave/${data.keywordid}/delete`;
+    return new Promise((resolve, reject) => {
+      axios.put(projectUrl).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
+  addKeyword: (data) => {
+    const projectUrl = `${global.URL_PROJECT}/palavra-chave`;
+    const reqBody =  data;
+    
+    return new Promise((resolve, reject) => {
+      axios.post(projectUrl, reqBody).then((response) => {
+        console.log('RESPONSESE', response.data);
+        resolve(response.data);
+      }).catch((error) => {
+        
+        // console.log('erro',error);
+        reject(error);
+      });
+    });
+  },  
+
+  getKeywordsAlternative: (data) => {
+    console.log('Tá aqui na poha Gateway');
+    const projectUrl = `${global.URL_PROJECT}/palavra-chave2`;
+    const reqBody =  data;
+        
+    return new Promise((resolve, reject) => {
+      axios.get(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        
+        console.log('erro',error);
+        reject(error);
+      });
+    });
+  },  
 };
+
+
+
+
