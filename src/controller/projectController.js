@@ -213,4 +213,13 @@ module.exports = {
       });
     });
   },
+  deleteSubject: (subjectId) => {
+    return new Promise((resolve, reject) => {
+      axios.delete(`${global.URL_PROJECT}/subject/${subjectId}`).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };
