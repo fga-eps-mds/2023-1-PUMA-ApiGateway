@@ -149,4 +149,60 @@ router.get('/subareas', (req, res) => {
   });
 });
 
+router.post('/subject', (req, res) => {
+  projectController.addSubject(req.body).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.get('/subject/keywords', (req, res) => {
+  projectController.getAvailableKeywordsToSubject().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.get('/subareas', (req, res) => {
+  projectController.getSubareas().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.get('/professors', (req, res) => {
+  projectController.getProfessors().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.get('/subjectList', (req, res) => {
+  projectController.getSubjects().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.get('/subject/:subjectid', (req, res) => {
+  projectController.getSubject(parseInt(req.params.subjectid, 10)).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+router.put('/subject/:subjectid', (req, res) => {
+  projectController.updateSubject(parseInt(req.params.subjectid, 10), req.body).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
 module.exports = router;

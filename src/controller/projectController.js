@@ -174,4 +174,43 @@ module.exports = {
       });
     });
   },
+
+  getProfessors: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/professors`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  getSubject: (subjectid) => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subject/${subjectid}`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  getSubjects: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subjectList`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  updateSubject: (subjectid, data) => {
+    const projectUrl = `${global.URL_PROJECT}/subject/${subjectid}`;
+    const reqBody = data;
+    return new Promise((resolve, reject) => {
+      axios.put(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };
