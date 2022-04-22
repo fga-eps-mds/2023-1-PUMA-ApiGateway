@@ -175,6 +175,18 @@ module.exports = {
     });
   },
 
+  getSubjectsKey: (data) => {
+    const projectUrl = `${global.URL_PROJECT}/subjects`;
+    const reqBody = data;
+    return new Promise((resolve, reject) => {
+      axios.get(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
   getProfessors: () => new Promise((resolve, reject) => {
     const projectUrl = `${global.URL_PROJECT}/professors`;
     axios.get(projectUrl).then((response) => {

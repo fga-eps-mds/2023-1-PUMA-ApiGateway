@@ -1,5 +1,4 @@
 include .env
-
 .PHONY: up-build
 
 COL=$(echo -e "\033[1;34")
