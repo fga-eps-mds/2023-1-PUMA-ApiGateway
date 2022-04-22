@@ -69,7 +69,7 @@ module.exports = {
   },
 
   getKeywordsAvailbleToProject: () => new Promise((resolve, reject) => {
-    const url = `${global.URL_PROJECT}/keywords`;
+    const url = `${global.URL_PROJECT}/project/keywords`;
     axios.get(url).then((response) => {
       resolve(response);
     }).catch((error) => {
