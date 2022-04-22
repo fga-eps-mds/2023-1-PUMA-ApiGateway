@@ -205,6 +205,14 @@ router.put('/subject/:subjectid', (req, res) => {
   });
 });
 
+router.delete('/subject/:subjectId', (req, res) => {
+  projectController.deleteSubject(req.params.subjectId).then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
 module.exports = router;
 
 
