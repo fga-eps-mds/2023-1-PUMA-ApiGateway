@@ -69,7 +69,7 @@ module.exports = {
   },
 
   getKeywordsAvailbleToProject: () => new Promise((resolve, reject) => {
-    const url = `${global.URL_PROJECT}/keywords`;
+    const url = `${global.URL_PROJECT}/project/keywords`;
     axios.get(url).then((response) => {
       resolve(response);
     }).catch((error) => {
@@ -79,7 +79,6 @@ module.exports = {
 
   getKeywords: () => {
     const projectUrl = `${global.URL_PROJECT}/palavra-chave`;
-    console.log('Projecturl', projectUrl);
     return new Promise((resolve, reject) => {
       axios.get(projectUrl).then((response) => {
         resolve(response);
@@ -176,149 +175,54 @@ module.exports = {
     });
   },
 
-  editKeyword: (data) => {
-    // console.log('Chegou no Gateway');
-    const projectUrl = `${global.URL_PROJECT}/palavra-chave/edit`;
+  getSubjectsKey: (data) => {
+    const projectUrl = `${global.URL_PROJECT}/subjects`;
+    const reqBody = data;
+    return new Promise((resolve, reject) => {
+      axios.get(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
+  getProfessors: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/professors`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  getSubject: (subjectid) => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subject/${subjectid}`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  getSubjects: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/subjectList`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
+  updateSubject: (subjectid, data) => {
+    const projectUrl = `${global.URL_PROJECT}/subject/${subjectid}`;
     const reqBody = data;
     return new Promise((resolve, reject) => {
       axios.put(projectUrl, reqBody).then((response) => {
         resolve(response);
       }).catch((error) => {
-        console.log('erro',error);
         reject(error);
       });
     });
   },
-
-  deleteKeyword: (data) => {
-    const projectUrl = `${global.URL_PROJECT}/palavra-chave/${data.keywordid}/delete`;
-    return new Promise((resolve, reject) => {
-      axios.put(projectUrl).then((response) => {
-        resolve(response);
-      }).catch((error) => {
-        reject(error);
-      });
-    });
-  },
-
-  addKeyword: (data) => {
-    const projectUrl = `${global.URL_PROJECT}/palavra-chave`;
-    const reqBody =  data;
-    
-    return new Promise((resolve, reject) => {
-      axios.post(projectUrl, reqBody).then((response) => {
-        console.log('RESPONSESE', response.data);
-        resolve(response.data);
-      }).catch((error) => {
-        
-        // console.log('erro',error);
-        reject(error);
-      });
-    });
-  },  
-
-
-  addKeywordSubject: (data) => {
-    const projectUrl = `${global.URL_PROJECT}/subject/keyword`;
-    const reqBody =  data;
-    
-    return new Promise((resolve, reject) => {
-      axios.post(projectUrl, reqBody).then((response) => {
-        resolve(response.data);
-      }).catch((error) => {
-        
-        // console.log('erro',error);
-        reject(error);
-      });
-    });
-  },  
-
-
-  updateSubjectKeyword: (data) => {
-    const projectUrl = `${global.URL_PROJECT}/switch/subject`;
-    const reqBody =  data;
-    
-    return new Promise((resolve, reject) => {
-      axios.put(projectUrl, reqBody).then((response) => {
-        resolve(response.data);
-      }).catch((error) => {
-        
-        // console.log('erro',error);
-        reject(error);
-      });
-    });
-  },  
-
-
-  getKeywordsAlternative: (data) => {
-    // console.log('Tá aqui na poha Gateway');
-    const projectUrl = `${global.URL_PROJECT}/palavra-chave2`;
-    const reqBody =  data;
-        
-    return new Promise((resolve, reject) => {
-      axios.get(projectUrl, reqBody).then((response) => {
-        resolve(response);
-      }).catch((error) => {
-        
-        console.log('erro',error);
-        reject(error);
-      });
-    });
-  },  
-
-getSubjectsKey: (data) => {
-  console.log('Subjects');
-  const projectUrl = `${global.URL_PROJECT}/subjects`;
-  const reqBody =  data;
-      
-  return new Promise((resolve, reject) => {
-    axios.get(projectUrl, reqBody).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      
-      console.log('erro',error);
-      reject(error);
-    });
-  });
-},
-
-getProfessors: () => new Promise((resolve, reject) => {
-  const projectUrl = `${global.URL_PROJECT}/professors`;
-  axios.get(projectUrl).then((response) => {
-    resolve(response);
-  }).catch((error) => {
-    reject(error);
-  });
-}),
-
-getSubject: (subjectid) => new Promise((resolve, reject) => {
-  const projectUrl = `${global.URL_PROJECT}/subject/${subjectid}`;
-  axios.get(projectUrl).then((response) => {
-    resolve(response);
-  }).catch((error) => {
-    reject(error);
-  });
-}),
-
-getSubjects: () => new Promise((resolve, reject) => {
-  const projectUrl = `${global.URL_PROJECT}/subjectList`;
-  axios.get(projectUrl).then((response) => {
-    resolve(response);
-  }).catch((error) => {
-    reject(error);
-  });
-}),
-
-updateSubject: (subjectid, data) => {
-  const projectUrl = `${global.URL_PROJECT}/subject/${subjectid}`;
-  const reqBody = data;
-  return new Promise((resolve, reject) => {
-    axios.put(projectUrl, reqBody).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      reject(error);
-    });
-  });
-},
 };
-  
