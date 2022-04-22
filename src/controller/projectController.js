@@ -235,7 +235,7 @@ module.exports = {
 
 
   updateSubjectKeyword: (data) => {
-    const projectUrl = `${global.URL_PROJECT}/subject/keyword`;
+    const projectUrl = `${global.URL_PROJECT}/switch/subject`;
     const reqBody =  data;
     
     return new Promise((resolve, reject) => {

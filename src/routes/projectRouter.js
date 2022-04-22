@@ -244,7 +244,7 @@ router.post('/subject/keyword', (req, res) => { // Falta tratamento dos dados
 });
 
 // Atualização Keyword Subject
-router.put('/subject/keyword', (req, res) => {
+router.put('/switch/subject', (req, res) => {
 
   projectController.updateSubjectKeyword(req.body).then((response) => {
     res.status(200).json({ response });
