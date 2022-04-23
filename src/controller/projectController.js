@@ -1,16 +1,12 @@
 const axios = require('axios');
 const authentication = require('../utils/authentication');
 
-const projUrlGetAlocated = `${global.URL_PROJECT}/alocated/`;
 const projUrlGetProject = `${global.URL_PROJECT}/project/get/`;
 const projUrlPostProject = `${global.URL_PROJECT}/project/create`;
 const projUrlPutProject = `${global.URL_PROJECT}/project/update`;
 const projUrlDeleteProject = `${global.URL_PROJECT}/project/delete/`;
 const projUrlPutProjectEvaluate = `${global.URL_PROJECT}/project/evaluate`;
 const projUrlPutProjectReallocate = `${global.URL_PROJECT}/project/reallocate`;
-const projUrlPutAlocated = `${global.URL_PROJECT}/alocated/status`;
-const projUrlGetAllSubjects = `${global.URL_PROJECT}/subject`;
-const projUrlPutProposalStatus = `${global.URL_PROJECT}/alocate/`;
 const projUrlGetMyProposals = `${global.URL_PROJECT}/userProposals/`;
 
 module.exports = {
@@ -88,42 +84,10 @@ module.exports = {
     });
   },
 
-  getAllSubjects: () => new Promise((resolve, reject) => {
-    axios.get(projUrlGetAllSubjects).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      reject(error);
-    });
-  }),
-
-  getAlocated: (subjectId) => new Promise((resolve, reject) => {
-    axios.get(projUrlGetAlocated + subjectId).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      reject(error);
-    });
-  }),
-
   getMyProposals: async (req) => {
     const userId = authentication.getUserId(req.headers.auth);
     return axios.get(projUrlGetMyProposals + userId, { params: req.query });
   },
-
-  putAlocated: (body) => new Promise((resolve, reject) => {
-    axios.put(projUrlPutAlocated, body).then((response) => {
-      resolve(response);
-    }).catch((error) => {
-      reject(error);
-    });
-  }),
-
-  putProposalStatus: (projectId, body) => new Promise((resolve, reject) => {
-    axios.put(`${projUrlPutProposalStatus + projectId}/status`, body).then((response) => {
-      resolve(response);
-    }).catch((err) => {
-      reject(err);
-    });
-  }),
 
   addFile: (req) => {
     const projectUrl = `${global.URL_PROJECT}/upload`;
@@ -175,18 +139,6 @@ module.exports = {
     });
   },
 
-  getSubjectsKey: (data) => {
-    const projectUrl = `${global.URL_PROJECT}/subjects`;
-    const reqBody = data;
-    return new Promise((resolve, reject) => {
-      axios.get(projectUrl, reqBody).then((response) => {
-        resolve(response);
-      }).catch((error) => {
-        reject(error);
-      });
-    });
-  },
-
   getProfessors: () => new Promise((resolve, reject) => {
     const projectUrl = `${global.URL_PROJECT}/professors`;
     axios.get(projectUrl).then((response) => {
@@ -206,7 +158,7 @@ module.exports = {
   }),
 
   getSubjects: () => new Promise((resolve, reject) => {
-    const projectUrl = `${global.URL_PROJECT}/subjectList`;
+    const projectUrl = `${global.URL_PROJECT}/subject`;
     axios.get(projectUrl).then((response) => {
       resolve(response);
     }).catch((error) => {
@@ -225,6 +177,7 @@ module.exports = {
       });
     });
   },
+
   deleteSubject: (subjectId) => {
     return new Promise((resolve, reject) => {
       axios.delete(`${global.URL_PROJECT}/subject/${subjectId}`).then((response) => {

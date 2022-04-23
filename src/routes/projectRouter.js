@@ -60,25 +60,10 @@ router.get('/myProposals', authentication.authenticateAny, (req, res) => {
   });
 });
 
-router.get('/alocated/:subjectId', authentication.authenticateProfessor, (req, res) => {
-  projectController.getAlocated(req.params.subjectId).then((response) => {
-    res.status(200).json(response.data);
-  }).catch((error) => {
-    res.status(400).json(error);
-  });
-});
-
-router.put('/alocated/status', authentication.authenticateProfessor, (req, res) => {
-  projectController.putAlocated(req.body).then((response) => {
-    res.status(200).json(response.data);
-  }).catch((error) => {
-    res.status(400).json(error);
-  });
-});
-
-router.put('/alocate/:projectId/status', authentication.authenticateProfessor, (req, res) => {
-  projectController.putProposalStatus(req.params.projectId, req.body).then((response) => {
-    res.status(200).json(response.data);
+router.post('/upload', authentication.authenticateAny, (req, res) => {
+  projectController.addFile(req).then((response) => {
+    const { data } = response;
+    res.status(200).json({ data });
   }).catch((error) => {
     res.status(400).json(error);
   });
@@ -101,17 +86,8 @@ router.get('/palavra-chave', (req, res) => {
 });
 
 router.get('/subject', authentication.authenticateAny, (req, res) => {
-  projectController.getAllSubjects(req.body).then((response) => {
+  projectController.getSubjects(req.body).then((response) => {
     res.status(200).json(response.data);
-  }).catch((error) => {
-    res.status(400).json(error);
-  });
-});
-
-router.post('/upload', authentication.authenticateAny, (req, res) => {
-  projectController.addFile(req).then((response) => {
-    const { data } = response;
-    res.status(200).json({ data });
   }).catch((error) => {
     res.status(400).json(error);
   });
@@ -213,9 +189,6 @@ router.delete('/subject/:subjectId', (req, res) => {
   });
 });
 
-module.exports = router;
-
-
 // Palavras-Chave - CRUD
 router.get('/palavra-chave', (req, res) => {
   projectController.getKeywords().then((response) => {
@@ -225,47 +198,36 @@ router.get('/palavra-chave', (req, res) => {
   });
 });
 
-
-
-
-
-
 // Body com campo Keyword necessário
 router.post('/palavra-chave', (req, res) => { // Falta tratamento dos dados
-  console.log('debug create',req.body);
-
   projectController.addKeyword(req.body).then((response) => {
     res.status(200).json({ response });
   }).catch((e) => {
-    res.status(400).json({ 'error': e});
+    res.status(400).json({ 'error': e });
   });
 });
 
 // Add Keyword into Subject
 router.post('/subject/keyword', (req, res) => { // Falta tratamento dos dados
-
   projectController.addKeywordSubject(req.body).then((response) => {
     res.status(200).json({ response });
   }).catch((e) => {
-    res.status(400).json({ 'error': e});
+    res.status(400).json({ 'error': e });
   });
 });
 
 // Atualização Keyword Subject
 router.put('/switch/subject', (req, res) => {
-
   projectController.updateSubjectKeyword(req.body).then((response) => {
     res.status(200).json({ response });
   }).catch((e) => {
-    res.status(400).json({ 'error': e});
+    res.status(400).json({ 'error': e });
   });
 });
-
 
 // Body necessita da keywordid (id palavra chave a ser mudada) e newKeyword (nova palavra a ser atualizada)
 router.put('/palavra-chave/edit', (req, res) => {
   const { body, params } = req;
-  
   projectController.editKeyword(body).then((response) => {
     res.status(200).json(response.data);
   }).catch((e) => {
@@ -276,9 +238,7 @@ router.put('/palavra-chave/edit', (req, res) => {
 // Parâmetro vai na url devido a deleção ser via update
 router.put('/palavra-chave/:keywordid/delete', (req, res) => {
   const { body, params } = req;
-  console.log('Debug params', params);
   projectController.deleteKeyword(params).then((response) => {
-
     res.status(200).json(response.data);
   }).catch((e) => {
     res.status(400).json({ 'bruno': params, 'response': parseInt(params) });
@@ -287,14 +247,12 @@ router.put('/palavra-chave/:keywordid/delete', (req, res) => {
 
 // Body com campo Keyword necessário
 router.post('/palavra-chave', (req, res) => { // Falta tratamento dos dados
-  console.log('reqbody', req.body);
   projectController.addKeyword(req.body).then((response) => {
     res.status(200).json({ response });
   }).catch((e) => {
-    res.status(400).json({ 'error': e});
+    res.status(400).json({ 'error': e });
   });
 });
-
 
 router.get('/palavra-chave2', (req, res) => {
   projectController.getKeywordsAlternative().then((response) => {
@@ -304,10 +262,4 @@ router.get('/palavra-chave2', (req, res) => {
   });
 });
 
-router.get('/subjects', (req, res) => {
-  projectController.getSubjectsKey().then((response) => {
-    res.status(200).json(response.data);
-  }).catch((response) => {
-    res.status(400).json({ response });
-  });
-});
+module.exports = router;
