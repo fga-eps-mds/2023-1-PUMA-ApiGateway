@@ -127,6 +127,15 @@ module.exports = {
     });
   }),
 
+  getKnowledgeAreas: () => new Promise((resolve, reject) => {
+    const projectUrl = `${global.URL_PROJECT}/knowledgeareas`;
+    axios.get(projectUrl).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
+
   addSubject: (data) => {
     const projectUrl = `${global.URL_PROJECT}/subject`;
     const reqBody = data;

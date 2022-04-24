@@ -149,6 +149,15 @@ router.get('/subareas', (req, res) => {
   });
 });
 
+router.get('/knowledgeareas', (req, res) => {
+  projectController.getKnowledgeAreas().then((response) => {
+    res.status(200).json(response.data);
+  }).catch((error) => {
+    res.status(400).json({ error });
+  });
+});
+
+
 router.get('/professors', (req, res) => {
   projectController.getProfessors().then((response) => {
     res.status(200).json(response.data);
