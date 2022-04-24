@@ -68,7 +68,7 @@ module.exports = {
   },
 
   updateSubjectKeyword: (data) => {
-    const projectUrl = `${global.URL_PROJECT}/subject/keyword`;
+    const projectUrl = `${global.URL_PROJECT}/switch/subject`;
     const reqBody = data;
     return new Promise((resolve, reject) => {
       axios.put(projectUrl, reqBody).then((response) => {
@@ -90,6 +90,20 @@ module.exports = {
       });
     });
   },
+
+  getSubjects: (data) => {
+    const projectUrl = `${global.URL_PROJECT}/subjects`;
+    const reqBody = data;
+    return new Promise((resolve, reject) => {
+      axios.get(projectUrl, reqBody).then((response) => {
+        resolve(response);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
+  
 
 };
 
