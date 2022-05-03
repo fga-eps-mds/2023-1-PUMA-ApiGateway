@@ -3,7 +3,7 @@ const endpoints = require('../utils/endpoints');
 const userRouter = require('./userRouter');
 const projectRouter = require('./projectRouter');
 const keywordRouter = require('./keywordRouter');
-const knowledgeAreaRouter = require('./knowledgeAreaRouter');
+const subjectRouter = require('./subjectRouter');
 
 const router = express.Router();
 
@@ -17,5 +17,6 @@ module.exports = (app) => {
   app.use('/', [router]);
   app.use('/user', [userRouter]);
   app.use('/project', [projectRouter]);
-  app.use('/keywords', [keywordRouter]);
+  app.use('/subject', [subjectRouter]);
+  app.use('/keyword', [keywordRouter]);
 };
