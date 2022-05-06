@@ -95,4 +95,64 @@ module.exports = {
             },
         },
     },
+    KEYWORD:{
+        REGISTER: {
+            SUCCESS: {
+                T1: {
+                    keyword: 'keyword',
+                },
+            },
+            FAILURE: {
+                T1: {
+                    keyword: null
+                },
+            },
+        },
+        UPDATE:{
+            SUCCESS: {
+                T1: {
+                    keywordid: 1,
+                    newKeyword: 'new keyword'
+                }
+            },
+            FAILURE: {
+                T1: {
+                    keywordid: 1,
+                    newKeyword: null
+                }
+            }
+        },
+
+        SUBJECT:{
+            SUCCESS: {
+                T1: {
+                    keywordid: 1,
+                    subjectid: 1
+                }
+            },
+            FAILURE: {
+                T1: {
+                    keywordid: 1,
+                    subjectid: null
+                }
+            }
+        },
+
+        UPDATE_SUBJECT: {
+            SUCCESS: {
+                T1: {
+                    keywordid: 1, 
+                    subjectid: 1
+
+                }
+            },
+            FAILURE: {
+                T1: {
+                    keywordid: 1,
+                    subjectid: 5
+                }
+            }
+        }
+
+    }
 };
