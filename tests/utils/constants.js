@@ -61,8 +61,38 @@ module.exports = {
             },
         },
         EVALUATE: {
-            SUCCESS: {},
-            FAILURE: {},
+            SUCCESS: {
+                T1: {
+                    projectId: 1,
+                    status: "AC",
+                    feedback: "PROPOSTA ACEITA!"
+                },
+            },
+            FAILURE: {
+                T1: {
+                    projectId: 1,
+                    status: "RECUSADA",
+                    feedback: "PROPOSTA RECUSADA!"
+                },
+            },
+        },
+        REALLOCATE: {
+            SUCCESS: {
+                T1: {
+                    projectId: 1,
+                    subjectId: 1,
+                    status: "RL",
+                    feedback: "PROPOSTA REALOACADA !"
+                },
+            },
+            FAILURE: {
+                T1: {
+                    projectId: null,
+                    subjectId: null,
+                    status: "RECUSADA",
+                    feedback: "PROPOSTA INEXISTENTE!"
+                },
+            },
         },
     },
 };

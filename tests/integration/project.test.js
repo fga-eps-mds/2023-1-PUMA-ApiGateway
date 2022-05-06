@@ -12,6 +12,7 @@ describe('Register Project Success', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
+        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -60,7 +61,7 @@ describe('Register Project Failure', () => {
             .then(() => {
                 done();
             }).catch((error) => {
-                done(new Error('The project has been registered'));
+                done(new Error(error));
             });
     });
 });
@@ -139,6 +140,181 @@ describe('Get Success Keywords Availble To Project', () => {
     it('Should get keywords availble to project', (done) => {
         request(app)
             .get('/project/keywords')
+            .set({ auth })
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
+
+
+describe('Professor Evaluate Project Success', () => {
+    let auth = '';
+
+    before((done) => {
+        const url = `${global.URL_GATEWAY}/user/login`;
+        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+            auth = response.data.token;
+            done();
+        }).catch((error) => {
+            done(new Error(error));
+        });
+    });
+
+    it('Should Evaluate the project', (done) => {
+        request(app)
+            .put('/project/evaluate')
+            .set({ auth })
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.PROJECT.EVALUATE.SUCCESS.T1)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
+
+describe('Professor Evaluate Project Failure', () => {
+    let auth = '';
+
+    before((done) => {
+        const url = `${global.URL_GATEWAY}/user/login`;
+        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+            auth = response.data.token;
+            done();
+        }).catch((error) => {
+            done(new Error(error));
+        });
+    });
+
+    it('Should Failure Evaluate the project', (done) => {
+        request(app)
+            .put('/project/evaluate')
+            .set({ auth })
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.PROJECT.EVALUATE.FAILURE.T1)
+            .expect('Content-Type', /json/)
+            .expect(400)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
+
+
+
+describe('Realocation of Project with Success', () => {
+    let auth = '';
+
+    before((done) => {
+        const url = `${global.URL_GATEWAY}/user/login`;
+        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+            auth = response.data.token;
+            done();
+        }).catch((error) => {
+            done(new Error(error));
+        });
+    });
+
+    it('Should Realocation the project success', (done) => {
+        request(app)
+            .put('/project/reallocate')
+            .set({ auth })
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.PROJECT.REALLOCATE.SUCCESS.T1)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
+
+describe('Realocation of Project with Failures', () => {
+    let auth = '';
+
+    before((done) => {
+        const url = `${global.URL_GATEWAY}/user/login`;
+        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+            auth = response.data.token;
+            done();
+        }).catch((error) => {
+            done(new Error(error));
+        });
+    });
+
+    it('Should Failure Realocation the project', (done) => {
+        request(app)
+            .put('/project/reallocate')
+            .set({ auth })
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.PROJECT.REALLOCATE.FAILURE.T1)
+            .expect('Content-Type', /json/)
+            .expect(400)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
+
+describe('Get Project by ID', () => {
+    let auth = '';
+
+    before((done) => {
+        const url = `${global.URL_GATEWAY}/user/login`;
+        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+            auth = response.data.token;
+            done();
+        }).catch((error) => {
+            done(new Error(error));
+        });
+    });
+
+    it('Should get specific project', (done) => {
+        request(app)
+            .get('/project/1')
+            .set({ auth })
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
+
+describe('Delete a Project', () => {
+    let auth = '';
+
+    before((done) => {
+        const url = `${global.URL_GATEWAY}/user/login`;
+        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+            auth = response.data.token;
+            done();
+        }).catch((error) => {
+            done(new Error(error));
+        });
+    });
+
+    it('Should delete a project', (done) => {
+        request(app)
+            .delete('/project/1')
             .set({ auth })
             .set('Accept', 'application/json')
             .expect('Content-Type', /json/)
