@@ -13,7 +13,7 @@ describe('Register Keywords', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -44,7 +44,7 @@ describe('Register Keywords Failure', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -74,7 +74,7 @@ describe('Get Keywords', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -103,7 +103,7 @@ describe('Update a Keyword', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -134,7 +134,7 @@ describe('Update Keyword Failure', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -165,7 +165,7 @@ describe('Link Keyword To Subject', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -196,7 +196,7 @@ describe('Failure in Link Keyword To Subject', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -228,7 +228,7 @@ describe('Update Subject of Keyword', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -258,7 +258,7 @@ describe('Failure in Update Subject of Keyword', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -288,7 +288,7 @@ describe('Delete a Keyword', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {

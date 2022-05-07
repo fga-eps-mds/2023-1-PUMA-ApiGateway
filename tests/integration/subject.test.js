@@ -12,7 +12,7 @@ describe('Get Subjects', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -43,7 +43,7 @@ describe('Get Available Keywords To Subject', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -72,7 +72,7 @@ describe('Get Subareas of Subject', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -102,7 +102,7 @@ describe('Get Knowledge Areas of Subject', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -131,7 +131,7 @@ describe('Get Professors of Subject', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -159,7 +159,7 @@ describe('Get Details of Subject', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -190,7 +190,7 @@ describe('Register Subjects', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -221,7 +221,7 @@ describe('Register Subjects Failure', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -252,7 +252,7 @@ describe('Update Details Subjects', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -283,7 +283,7 @@ describe('Failure Update Details Subjects', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -313,7 +313,7 @@ describe('Delete a Subject', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {

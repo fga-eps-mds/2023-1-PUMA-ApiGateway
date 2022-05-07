@@ -13,7 +13,7 @@ describe('Register Project Success', () => {
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
         console.log({url});
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -42,7 +42,7 @@ describe('Register Project Failure', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -71,7 +71,7 @@ describe('Update Project Success', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -100,7 +100,7 @@ describe('Update Project Failure', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -129,7 +129,7 @@ describe('Get Success Keywords Availble To Project', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -158,7 +158,7 @@ describe('Professor Evaluate Project Success', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -187,7 +187,7 @@ describe('Professor Evaluate Project Failure', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -218,7 +218,7 @@ describe('Realocation of Project with Success', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -247,7 +247,7 @@ describe('Realocation of Project with Failures', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -276,7 +276,7 @@ describe('Get Project by ID', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
@@ -304,7 +304,7 @@ describe('Delete a Project', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        axios.post(url, CONSTANTS.USER.LOGIN.SUCCESS.T1).then((response) => {
+        axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
         }).catch((error) => {
