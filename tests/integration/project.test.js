@@ -12,7 +12,6 @@ describe('Register Project Success', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -119,7 +118,7 @@ describe('Update Project Failure', () => {
             .then(() => {
                 done();
             }).catch((error) => {
-                done(new Error('The project has been updated'));
+                done(new Error(error));
             });
     });
 });
@@ -151,7 +150,6 @@ describe('Get Success Keywords Availble To Project', () => {
             });
     });
 });
-
 
 describe('Professor Evaluate Project Success', () => {
     let auth = '';
@@ -210,8 +208,6 @@ describe('Professor Evaluate Project Failure', () => {
             });
     });
 });
-
-
 
 describe('Realocation of Project with Success', () => {
     let auth = '';

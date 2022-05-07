@@ -35,9 +35,6 @@ describe('Get Subjects', () => {
     });
 });
 
-
-
-
 describe('Get Available Keywords To Subject', () => {
     let auth = '';
 
@@ -65,7 +62,6 @@ describe('Get Available Keywords To Subject', () => {
             });
     });
 });
-
 
 describe('Get Subareas of Subject', () => {
     let auth = '';
@@ -95,8 +91,6 @@ describe('Get Subareas of Subject', () => {
     });
 });
 
-
-
 describe('Get Knowledge Areas of Subject', () => {
     let auth = '';
 
@@ -124,7 +118,6 @@ describe('Get Knowledge Areas of Subject', () => {
             });
     });
 });
-
 
 describe('Get Professors of Subject', () => {
     let auth = '';
@@ -182,14 +175,11 @@ describe('Get Details of Subject', () => {
     });
 });
 
-
-
 describe('Register Subjects', () => {
     let auth = '';
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -214,13 +204,11 @@ describe('Register Subjects', () => {
     });
 });
 
-
 describe('Register Subjects Failure', () => {
     let auth = '';
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -245,13 +233,11 @@ describe('Register Subjects Failure', () => {
     });
 });
 
-
 describe('Update Details Subjects', () => {
     let auth = '';
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -276,13 +262,11 @@ describe('Update Details Subjects', () => {
     });
 });
 
-
 describe('Failure Update Details Subjects', () => {
     let auth = '';
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -306,7 +290,6 @@ describe('Failure Update Details Subjects', () => {
             });
     });
 });
-
 
 describe('Delete a Subject', () => {
     let auth = '';

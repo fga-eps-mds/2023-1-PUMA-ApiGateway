@@ -12,7 +12,6 @@ describe('Register Keywords', () => {
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -37,13 +36,11 @@ describe('Register Keywords', () => {
     });
 });
 
-
 describe('Register Keywords Failure', () => {
     let auth = '';
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -67,7 +64,6 @@ describe('Register Keywords Failure', () => {
             });
     });
 });
-
 
 describe('Get Keywords', () => {
     let auth = '';
@@ -96,7 +92,6 @@ describe('Get Keywords', () => {
             });
     });
 });
-
 
 describe('Update a Keyword', () => {
     let auth = '';
@@ -127,8 +122,6 @@ describe('Update a Keyword', () => {
     });
 });
 
-
-
 describe('Update Keyword Failure', () => {
     let auth = '';
 
@@ -158,13 +151,11 @@ describe('Update Keyword Failure', () => {
     });
 });
 
-
 describe('Link Keyword To Subject', () => {
     let auth = '';
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -189,13 +180,11 @@ describe('Link Keyword To Subject', () => {
     });
 });
 
-
 describe('Failure in Link Keyword To Subject', () => {
     let auth = '';
 
     before((done) => {
         const url = `${global.URL_GATEWAY}/user/login`;
-        console.log({url});
         axios.post(url, CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1).then((response) => {
             auth = response.data.token;
             done();
@@ -219,9 +208,6 @@ describe('Failure in Link Keyword To Subject', () => {
             });
     });
 });
-
-
-
 
 describe('Update Subject of Keyword', () => {
     let auth = '';
@@ -252,7 +238,6 @@ describe('Update Subject of Keyword', () => {
     });
 });
 
-
 describe('Failure in Update Subject of Keyword', () => {
     let auth = '';
 
@@ -281,7 +266,6 @@ describe('Failure in Update Subject of Keyword', () => {
             });
     });
 });
-
 
 describe('Delete a Keyword', () => {
     let auth = '';

@@ -8,7 +8,6 @@
     "start": "node index.js",
     "test-debug": "mocha './tests/*/*.test.js' --recursive",
     "test": "nyc --reporter=cobertura --reporter=html mocha './tests/*/*.test.js' --recursive --reporter mocha-junit-reporter",
-    "unitary-test": "nyc --reporter=cobertura --reporter=text mocha './tests/*/*.test.js' --recursive --reporter mocha-junit-reporter",
     "no-console": "off"
   },
   "repository": {
