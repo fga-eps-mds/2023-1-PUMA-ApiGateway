@@ -153,6 +153,48 @@ module.exports = {
                 }
             }
         }
+    },
+    SUBJECT: {
+        
+        REGISTER:{
+            SUCCESS: {
+                T1: {
+                        subject: {name: "Disciplina de Testes",courseSyllabus: "Teste"},
+                        keywords: [{ keywordid: 1, keyword: "Palavra-Chave 1"}],
+                        subareas: [{subareaid: 1,knowledgeareaid: 1,description: "Criação de Questionários de Testes",deleted: false}],
+                        professors: [{regnumber: "6843154",userid: 1,fullname: "Professor Teste",email: "teste@email.com"}]
+                    }
+            },
+            
+            FAILURE: {
+                T1: {
+                    subject: {name: "Disciplina de Testes",courseSyllabus: "Teste"},
+                    keywords: [{ keywordid: 1, keyword: "Palavra-Chave Teste"}],
+                    subareas: [{subareaid: 1,knowledgeareaid: 1,description: "Criação de Testes para EPS",deleted: false}],
+                    professors: [{regnumber: null, userid: 1,fullname: "Professor Testes",email: "hilteste@email.com"}]
+                }
+            }
+        },
+        UPDATE:{
+            SUCCESS:{
+                T1: {
+                subject: { name: "Testes Integração", courseSyllabus: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget arcu ipsum. Mauris ligula nunc, gravida at felis in, congue rutrum nulla. Phasellus vulputate dictum consectetur. Nulla facilisi. Ut condimentum neque et laoreet pellentesque. Sed eu semper risus. Nam ultrices, tellus eget faucibus efficitur, sapien quam suscipit est, eu porttitor odio ipsum eget risus. Maecenas et ornare ipsum. Praesent non tincidunt arcua.", subjectid: 1, coursesyllabus: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget arcu ipsum. Mauris ligula nunc, gravida at felis in, congue rutrum nulla. Phasellus vulputate dictum consectetur. Nulla facilisi. Ut condimentum neque et laoreet pellentesque. Sed eu semper risus. Nam ultrices, tellus eget faucibus efficitur, sapien quam suscipit est, eu porttitor odio ipsum eget risus. Maecenas et ornare ipsum. Praesent non tincidunt arcua." }, 
+                keywords: [{ keyword: "Palavra-Chave 01", keywordid: 1 }], 
+                subareas: [{subareaid: 1, description: "Análise de Banco de Dados" }], 
+                professors: [{regnumber: "6843154", userid: 3, fullname: "Professor 03", email: "user03@email.com" }]}
+            },
 
+            FAILURE:{
+                T1: {
+                    subject: { name: "Testes Integração", courseSyllabus: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget arcu ipsum. Mauris ligula nunc, gravida at felis in, congue rutrum nulla. Phasellus vulputate dictum consectetur. Nulla facilisi. Ut condimentum neque et laoreet pellentesque. Sed eu semper risus. Nam ultrices, tellus eget faucibus efficitur, sapien quam suscipit est, eu porttitor odio ipsum eget risus. Maecenas et ornare ipsum. Praesent non tincidunt arcua.", subjectid: null, coursesyllabus: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget arcu ipsum. Mauris ligula nunc, gravida at felis in, congue rutrum nulla. Phasellus vulputate dictum consectetur. Nulla facilisi. Ut condimentum neque et laoreet pellentesque. Sed eu semper risus. Nam ultrices, tellus eget faucibus efficitur, sapien quam suscipit est, eu porttitor odio ipsum eget risus. Maecenas et ornare ipsum. Praesent non tincidunt arcua." }, 
+                    keywords: [{ keyword: "Palavra-Chave 01", keywordid: 1 }], 
+                    subareas: [{subareaid: 1, description: "Análise de Banco de Dados" }], 
+                    professors: [{regnumber: "6843154", userid: 3, fullname: "Professor 03", email: "user03@email.com" }]}
+                },
+            }
+
+            
     }
+    
+        
 };
