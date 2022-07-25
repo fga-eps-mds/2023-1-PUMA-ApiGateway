@@ -1,12 +1,15 @@
-name: Dispatch event
+name: Dispatch Generate Metrics Release
+
 on:
   release:
     types: [released]
+
 jobs:
   send-release:
     runs-on: ubuntu-latest
     env:
       REPO_NAME: ApiGateway
+      VERSION: 1.0.0
     steps:
       - uses: guilouro/multiple-repositories-dispatch@v1.0.0
         with:
@@ -14,4 +17,4 @@ jobs:
           event_type: event_name
           repositories: |
             fga-eps-mds/2021-2-PUMA-Doc
-          client_payload: '{"repo_name": "${{ env.REPO_NAME }}", "version": "${{ secrets.VERSION }}"}'
+          client_payload: '{"repo_name": "${{ env.REPO_NAME }}", "version": "${{ env.VERSION }}"}'
