@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create Metrics SonarCloud
-        run: python3 ./analytics-raw-data/metrics_file.py ${{ github.event.repository.name }} ${{ github.ref_name }}
+        run: python3 metrics_file.py ${{ github.event.repository.name }} ${{ github.ref_name }}
 
       - name: Commit Metrics SonarCloud File
         run: |
