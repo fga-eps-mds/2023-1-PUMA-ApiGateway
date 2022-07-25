@@ -8,10 +8,10 @@ jobs:
   send-release:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+
       - name: Create Metrics SonarCloud
-        run: |
-          ls
-          python3 metrics_file.py ${{ github.event.repository.name }} ${{ github.ref_name }}
+        run: python3 metrics_file.py ${{ github.event.repository.name }} ${{ github.ref_name }}
 
       - name: Commit Metrics SonarCloud File
         run: |
