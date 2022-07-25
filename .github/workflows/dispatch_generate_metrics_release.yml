@@ -10,7 +10,8 @@ jobs:
     env:
       REPO_NAME: ApiGateway
     steps:
-      - uses: guilouro/multiple-repositories-dispatch@1.0.0
+      - name: Dispatch event
+        uses: guilouro/multiple-repositories-dispatch@latest
         with:
           repo_token: ${{ secrets.REPO_TOKEN }}
           event_type: event_name
