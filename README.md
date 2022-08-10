@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Esse serviço é responsável por fazer o tratamento das requisições entre os microsserviços [ProjectService](https://github.com/fga-eps-mds/2021-1-PUMA-ProjectService) e [UserService](https://github.com/fga-eps-mds/2021-1-PUMA-UserService).
+O API Gateway é utilizado como um mutex para a comunicação entre a interface de usuário e os outros micro-serviços. Dessa forma, ao receber uma requisição o gateway atua como uma ponte entre o front end e o serviço desejado. Atualmente, esse serviço é responsável por fazer o tratamento das requisições entre os microsserviços [ProjectService](https://github.com/fga-eps-mds/2022-1-PUMA-ProjectService) e [UserService](https://github.com/fga-eps-mds/2022-1-PUMA-UserService).
 
 ### Como rodar
 
