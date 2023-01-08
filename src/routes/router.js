@@ -4,6 +4,7 @@ const userRouter = require('./userRouter');
 const projectRouter = require('./projectRouter');
 const keywordRouter = require('./keywordRouter');
 const subjectRouter = require('./subjectRouter');
+const classRouter = require('./classRouter');
 
 const router = express.Router();
 
@@ -19,4 +20,5 @@ module.exports = (app) => {
   app.use('/project', [projectRouter]);
   app.use('/subject', [subjectRouter]);
   app.use('/keyword', [keywordRouter]);
+  app.use('/class', [classRouter]);
 };
