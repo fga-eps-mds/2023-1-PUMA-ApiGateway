@@ -1,5 +1,5 @@
 # 2022-1-PUMA-ApiGateway
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fga-eps-mds_2022-1-PUMA-ApiGateway&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fga-eps-mds_2022-1-PUMA-ApiGateway) [![npm version](https://img.shields.io/badge/npm--express-v4.17.1-blue)](https://www.npmjs.com/package/express/v/4.17.1)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fga-eps-mds_2022-2-PUMA-ApiGateway&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fga-eps-mds_2022-2-PUMA-ApiGateway) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fga-eps-mds_2022-2-PUMA-ApiGateway&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fga-eps-mds_2022-2-PUMA-ApiGateway) [![npm version](https://img.shields.io/badge/npm--express-v4.17.1-blue)](https://www.npmjs.com/package/express/v/4.17.1)
 
 ## Objetivo
 
