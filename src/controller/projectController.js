@@ -6,8 +6,6 @@ module.exports = {
     const url = `${global.URL_PROJECT}/project/${projectId}`;
     axios.get(url).then((response) => {
       resolve(response);
-    }).catch((error) => {
-      reject(error);
     });
   }),
 
@@ -80,8 +78,6 @@ module.exports = {
   initial: () => new Promise((resolve, reject) => {
     axios.get(`${global.URL_PROJECT}`).then((response) => {
       resolve(response);
-    }).catch((error) => {
-      reject(error);
     });
   }),
 };

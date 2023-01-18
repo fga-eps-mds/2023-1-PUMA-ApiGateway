@@ -5,8 +5,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/class/${classid}`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 
@@ -14,8 +12,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/classes`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 

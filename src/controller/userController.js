@@ -46,10 +46,8 @@ module.exports = {
       axios.get(URL).then((res) => {
         resolve(res.data);
       });
-    }).catch(() => {
-      // eslint-disable-next-line no-undef
-      resolve(JSON.parse('{"cod": 400}'));
     });
+    ;
   },
 
   updatePassword: (param) => {
