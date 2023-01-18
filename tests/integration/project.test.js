@@ -322,3 +322,34 @@ describe('Delete a Project', () => {
             });
     });
 });
+
+describe('Initial Project Page', () => {
+    it('Should get initial page from Project Service', (done) => {
+        request(app)
+            .get('/project/initial')
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
+
+describe('Forbidden Request', () => {
+    let auth = '';
+
+    it('Should not get project', (done) => {
+        request(app)
+            .get('/project/1')
+            .set({ auth })
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(403)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
