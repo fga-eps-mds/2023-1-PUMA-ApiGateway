@@ -66,7 +66,6 @@ module.exports = {
     const userUrl = `${global.URL_USER}/recover`;
     const reqBody = body;
     return new Promise((resolve, reject) => {
-      console.log(reqBody)
       axios.post(userUrl, reqBody).then((response) => {
         resolve(response.data);
       }).catch((error) => {
