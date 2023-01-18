@@ -21,7 +21,7 @@ router.post('/login', (req, res) => {
 
 router.get('/aluno/:matriculaId', (req, res) => {
   userController.getStudent(req.params.matriculaId).then((response) => {
-    res.json(response);
+    res.status(200).json(response);
   });
 });
 

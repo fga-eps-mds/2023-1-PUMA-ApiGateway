@@ -26,10 +26,10 @@ module.exports = {
   },
 
   getStudent: (matriculaIdParam) => {
-    const URL = `${global.URL_USER}/aluno:matriculaId`;
+    const URL = `${global.URL_USER}/aluno/` + matriculaIdParam;
     const matriculaId = matriculaIdParam;
     return new Promise((resolve) => {
-      axios.get(URL, matriculaId).then((res) => {
+      axios.get(URL).then((res) => {
         resolve(res.data);
       });
     }).catch(() => {
