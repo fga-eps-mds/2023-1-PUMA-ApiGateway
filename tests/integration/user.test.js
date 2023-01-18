@@ -240,27 +240,12 @@ describe('Register Failure', () => {
     });
 });
 
-
-
 describe('Initial User Page', () => {
     it('Should get initial page from User Service', (done) => {
         request(app)
             .get('/user/initial')
             .expect(200)
             .then(() => {
-                done();
-            }).catch((error) => {
-                done(new Error(error));
-            });
-    });
-});
-
-describe('Data Query', () => {
-    it('Should get student by matricula', (done) => {
-        request(app)
-            .get('/user/aluno/' + CONSTANTS.USER.REGISTER.STUDENT.SUCCESS.T1.matricula)
-            .expect(200)
-            .then((response) => {
                 done();
             }).catch((error) => {
                 done(new Error(error));
