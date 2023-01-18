@@ -166,3 +166,6 @@ INSERT INTO is_assigned(regNumber, semesterId) VALUES
   ('6843154', 3),
   ('4354681', 3)
   ON CONFLICT DO NOTHING;
+
+INSERT INTO CLASSES(subjectId, classCode, year, semester, password, deleted) VALUES
+  (1, 'AA', 2022, '1', '12345', false);
