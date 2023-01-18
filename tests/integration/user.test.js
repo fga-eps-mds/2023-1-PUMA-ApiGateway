@@ -253,3 +253,61 @@ describe('Initial User Page', () => {
             });
     });
 });
+
+describe('Update Password Sucess', () => {
+    it('Should Update Student Password', (done) => {
+        request(app)
+            .put('/user/password/' + CONSTANTS.USER.LOGIN.STUDENT.SUCCESS.T1.email)
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.USER.LOGIN.STUDENT.SUCCESS.T1.password)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+
+    it('Should Update Professor Password', (done) => {
+        request(app)
+            .put('/user/password/' + CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1.email)
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.USER.LOGIN.PROFESSOR.SUCCESS.T1.password)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+
+    it('Should Update Juridical Agent Password', (done) => {
+        request(app)
+            .put('/user/password/' + CONSTANTS.USER.LOGIN.JURIDICAL_AGENT.SUCCESS.T1.email)
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.USER.LOGIN.JURIDICAL_AGENT.SUCCESS.T1.password)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+
+    it('Should Update Physical Agent Password', (done) => {
+        request(app)
+            .put('/user/password/' + CONSTANTS.USER.LOGIN.PHYSICAL_AGENT.SUCCESS.T1.email)
+            .set('Accept', 'application/json')
+            .send(CONSTANTS.USER.LOGIN.PHYSICAL_AGENT.SUCCESS.T1.password)
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(() => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});
