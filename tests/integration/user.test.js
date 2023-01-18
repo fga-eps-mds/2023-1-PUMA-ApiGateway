@@ -366,3 +366,16 @@ describe('Recover Failure', () => {
     });
     
 });
+
+describe('Data Query', () => {
+    it('Should get student by matricula', (done) => {
+        request(app)
+            .get('/user/aluno/' + CONSTANTS.USER.REGISTER.STUDENT.SUCCESS.T1.matricula)
+            .expect(200)
+            .then((response) => {
+                done();
+            }).catch((error) => {
+                done(new Error(error));
+            });
+    });
+});

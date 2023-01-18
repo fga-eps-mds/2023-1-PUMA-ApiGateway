@@ -25,17 +25,19 @@ module.exports = {
     return { token, ...response.data };
   },
 
-  getStudent: (matriculaIdParam) => {
+  getStudent: async (matriculaIdParam) => {
     const URL = `${global.URL_USER}/aluno/` + matriculaIdParam;
     const matriculaId = matriculaIdParam;
-    return new Promise((resolve) => {
-      axios.get(URL).then((res) => {
-        resolve(res.data);
+    try {
+      return await new Promise((resolve) => {
+        axios.get(URL).then((res) => {
+          resolve(res.data);
+        });
       });
-    }).catch(() => {
+    } catch {
       // eslint-disable-next-line no-undef
       resolve(JSON.parse('{"cod": 400}'));
-    });
+    }
   },
 
   initial: () => {
