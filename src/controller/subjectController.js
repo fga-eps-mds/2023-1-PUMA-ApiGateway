@@ -17,8 +17,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/subject/${subjectid}`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 
@@ -26,8 +24,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/subject`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 
@@ -58,8 +54,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/subject/keywords`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 
@@ -67,8 +61,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/professors`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 
@@ -76,8 +68,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/subareas`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 
@@ -85,8 +75,6 @@ module.exports = {
         const url = `${global.URL_PROJECT}/knowledgeareas`;
         axios.get(url).then((response) => {
             resolve(response);
-        }).catch((error) => {
-            reject(error);
         });
     }),
 };

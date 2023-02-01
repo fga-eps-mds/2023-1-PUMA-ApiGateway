@@ -5,7 +5,7 @@ on:
     branches: 
       - dev
   pull_request:
-    types: [opened, reopened]
+    types: [opened, reopened, edited]
 
 jobs:
   build:
@@ -13,6 +13,14 @@ jobs:
     defaults:
       run:
         working-directory: ./
+    env:
+        USER_PATH: 2022-2-PUMA-UserService 
+        PROJECT_PATH: 2022-2-PUMA-ProjectService
+        DB_USER: pumaadmin
+        DB_PASS: pumaadmin
+        DB: puma
+        DB_URL_TEST: postgres://pumaadmin:pumaadmin@127.17.0.1:5432/puma
+        IP_ADDRESS: 127.17.0.1
 
     steps:
     - uses: actions/checkout@v3
@@ -20,9 +28,34 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 14.x
+        
+    - name: check userService
+      uses: actions/checkout@v3
+      with:
+        repository: fga-eps-mds/2022-2-PUMA-UserService
+        path: 2022-2-PUMA-UserService
+    
+    - name: check projectService
+      uses: actions/checkout@v3
+      with:
+        repository: fga-eps-mds/2022-2-PUMA-ProjectService
+        path: 2022-2-PUMA-ProjectService
 
-    - name: Run npm install
-      run: npm install
+    - name: Build and up containers
+      run: | 
+          docker-compose -f test.actions.docker-compose.yaml up --build -d    
+    
+    - name: Create and Populate Database
+      run: |
+          docker cp ./tests/utils/db_drop.sql dbtest:/db_drop.sql
+          docker exec dbtest psql -U pumaadmin -d puma -f /db_drop.sql
+          docker cp ./tests/utils/db_create.sql dbtest:/db_create.sql 
+          docker exec dbtest psql -U pumaadmin -d puma -f /db_create.sql
+          docker cp ./tests/utils/db_populate.sql dbtest:/db_populate.sql
+          docker exec dbtest psql -U pumaadmin -d puma -f /db_populate.sql
+    
+    - name: Test
+      run: docker exec api-gateway-test npm run test-coverage
 
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
