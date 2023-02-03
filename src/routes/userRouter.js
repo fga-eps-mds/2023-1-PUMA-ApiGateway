@@ -52,7 +52,7 @@ router.post('/recover', (req, res) => {
 });
 
 router.post('/userType', (req, res) => {
-  userTypeController.addUserType(req.body).then((response) => {
+  userController.addUserType(req.body).then((response) => {
     if (response.status === 404) {
       res.status(404).json({ message: response.error });
     } else {
@@ -64,7 +64,7 @@ router.post('/userType', (req, res) => {
 });
 
 router.get('/userType', (req, res) => {
-  userTypeController.getUserType().then((response) => {
+  userController.getUserType().then((response) => {
     if (response.status === 404) {
       res.status(404).json({ message: response.error });
     } else {
@@ -76,7 +76,7 @@ router.get('/userType', (req, res) => {
 });
 
 router.get('/userType/:UserTypeid', (req, res) => {
-  userTypeController.getUserType(req.params.UserTypeid).then((response) => {
+  userController.getUserType(req.params.UserTypeid).then((response) => {
     if (response.status === 404) {
       res.status(404).json({ message: response.error });
     } else {
@@ -88,7 +88,7 @@ router.get('/userType/:UserTypeid', (req, res) => {
 });
 
 router.put('/userType/:UserTypeid', (req, res) => {
-  userTypeController.updateUserType(req.params.UserTypeid, req.body).then((response) => {
+  userController.updateUserType(req.params.UserTypeid, req.body).then((response) => {
     if (response.status === 404) {
       res.status(404).json({ message: response.error });
     } else {
@@ -100,7 +100,7 @@ router.put('/userType/:UserTypeid', (req, res) => {
 });
 
 router.delete('/userType/:UserTypeid', (req, res) => {
-  userTypeController.deleteUserType(req.params.UserTypeid).then((response) => {
+  userController.deleteUserType(req.params.UserTypeid).then((response) => {
     if (response.status === 404) {
       res.status(404).json({ message: response.error });
     } else {
