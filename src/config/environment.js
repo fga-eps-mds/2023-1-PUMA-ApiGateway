@@ -15,7 +15,7 @@ module.exports = {
       global.URL_HOM = `http://${process.env.IP_ADDRESS}:8080`;
       global.SECRET = process.env.SECRET;
     } else if (process.env.ENVIRONMENT === 'hom') {
-      global.URL_GATEWAY = `http://${process.env.IP_ADDRESS}:3004`;
+      global.URL_GATEWAY = 'https://puma-gateway.herokuapp.com';
       global.URL_USER = 'https://puma2023-1-user.herokuapp.com';
       global.URL_PROJECT = 'https://puma-projectservice.herokuapp.com';
       global.URL_ALOCATE = `http://${process.env.URL_ALOCATE}:3002`;
