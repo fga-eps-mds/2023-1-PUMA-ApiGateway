@@ -46,35 +46,19 @@ services:
             - /app/node_modules
         networks:
             - puma-network
-    alocate-service:
-        container_name: alocate-service
+    external-service:
+        container_name: external-service
         environment:
             ENVIRONMENT: dev
         build:
-            context: ../${ALOCATE_PATH}
+            context: ../${EXTERNAL_PATH}/
             dockerfile: dev.Dockerfile
         ports:
-            - "3002:3002"
+            - "3007:3007"
         depends_on:
             - db
         volumes:
-            - ../${ALOCATE_PATH}:/app
-            - /app/node_modules
-        networks:
-            - puma-network
-    notify-service:
-        container_name: notify-service
-        environment:
-            ENVIRONMENT: dev
-        build:
-            context: ../${NOTIFY_PATH}/
-            dockerfile: dev.Dockerfile
-        ports:
-            - "3003:3003"
-        depends_on:
-            - db
-        volumes:
-            - ../${NOTIFY_PATH}:/app
+            - ../${EXTERNAL_PATH}:/app
             - /app/node_modules
         networks:
             - puma-network

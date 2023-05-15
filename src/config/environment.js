@@ -6,6 +6,7 @@ module.exports = {
       global.URL_USER = `http://${process.env.IP_ADDRESS}:3001`;
       global.URL_PROJECT = `http://${process.env.IP_ADDRESS}:3000`;
       global.URL_ALOCATE = `http://${process.env.IP_ADDRESS}:3002`;
+      global.URL_EXTERNAL = `http://${process.env.IP_ADDRESS}:3007`;
       global.URL_HOM = `http://${process.env.IP_ADDRESS}:8080`;
       global.SECRET = process.env.SECRET;
     } else if (process.env.ENVIRONMENT === 'test') {
