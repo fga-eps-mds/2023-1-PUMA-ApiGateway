@@ -36,9 +36,7 @@ test-down:
 	sudo docker-compose -f test.docker-compose.yaml down
 
 up-build:
-	chmod +x ../${ALOCATE_PATH}/wait-for-it.sh && \
 	chmod +x ../${USER_PATH}/wait-for-it.sh && \
-	chmod +x ../${NOTIFY_PATH}/wait-for-it.sh && \
 	chmod +x ../${PROJECT_PATH}/wait-for-it.sh && \
 	sudo docker-compose up --build
 
