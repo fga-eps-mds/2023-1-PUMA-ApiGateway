@@ -17,7 +17,7 @@ jobs:
         run: npm install
       - name: Build and up containers
         run: | 
-          docker-compose -f test.docker-compose.yaml up --build -d    
+          docker-compose -f test.actions.docker-compose.yaml up --build -d    
       - name: Test Coverage
         run: docker exec api-gateway-test npm run test
       - name: SonarCloud Scan
