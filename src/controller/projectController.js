@@ -69,11 +69,15 @@ module.exports = {
     });
   }),
 
-  getMyProposals: async (req) => {
+  getMyProposals: (req) => new Promise ((resolve, reject) => {
     const userId = authentication.getUserId(req.headers.auth);
     const url = `${global.URL_PROJECT}/userProposals/${userId}`;
-    return axios.get(url, { params: req.query });
-  },
+    axios.get(url, { params: req.query }).then((response) => {
+      resolve(response);
+    }).catch((error) => {
+      reject(error);
+    });
+  }),
 
   initial: () => new Promise((resolve, reject) => {
     axios.get(`${global.URL_PROJECT}`).then((response) => {
