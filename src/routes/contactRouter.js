@@ -25,4 +25,22 @@ router.post('/create', (req, res) => {
     });
 });
 
+router.put('/update/:contactId', (req, res) => {
+    contactController.updateContact(req.params.contactId, req).then((response) => {
+        console.log(response.status)
+        res.status(200).json(response);
+    }).catch((error) => {
+        res.status(400).json(error);
+    });
+});
+
+router.delete('/delete/:contactId', (req, res) => {
+    contactController.deleteContact(req.params.contactId).then((response) => {
+        console.log(response.status)
+        res.status(200).json(response);
+    }).catch((error) => {
+        res.status(400).json(error);
+    });
+});
+
 module.exports = router;

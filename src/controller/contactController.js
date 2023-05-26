@@ -25,5 +25,26 @@ module.exports = {
             });
           });
     },
+    updateContact: (contactId, req) => {
+      const contactUrl = `${global.URL_USER}/contact/update/${contactId}`;
+      return new Promise((resolve, reject) => {
+        axios.put(contactUrl, req.body).then((response) => {
+                resolve(response.data);
+            }).catch((error) => {
+                reject(error);
+            });
+      })
+    },
+    deleteContact: (contactId) => {
+      const contactUrl = `${global.URL_USER}/contact/delete/${contactId}`;
+      return new Promise((resolve, reject) => {
+        axios.delete(contactUrl).then((response) => {
+                resolve(response.data);
+            }).catch((error) => {
+                reject(error);
+            });
+      })
+    }
+  
 };
 
