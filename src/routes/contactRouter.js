@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.get('/', (_, res) => {
     contactController.getContacts().then((response) => {
-        console.log(response.status)
         if(response.status === 404) {
             res.status(404).json({ message: response.error })
         } else {
@@ -18,7 +17,6 @@ router.get('/', (_, res) => {
 
 router.post('/create', (req, res) => {
     contactController.createContact(req).then((response) => {
-        console.log(response.status)
         res.status(200).json(response);
     }).catch((error) => {
         res.status(400).json(error);
@@ -27,7 +25,6 @@ router.post('/create', (req, res) => {
 
 router.put('/update/:contactId', (req, res) => {
     contactController.updateContact(req.params.contactId, req).then((response) => {
-        console.log(response.status)
         res.status(200).json(response);
     }).catch((error) => {
         res.status(400).json(error);
@@ -36,7 +33,6 @@ router.put('/update/:contactId', (req, res) => {
 
 router.delete('/delete/:contactId', (req, res) => {
     contactController.deleteContact(req.params.contactId).then((response) => {
-        console.log(response.status)
         res.status(200).json(response);
     }).catch((error) => {
         res.status(400).json(error);

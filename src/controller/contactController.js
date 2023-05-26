@@ -11,7 +11,7 @@ module.exports = {
             axios.get(contactUrl).then((response) => {
               resolve(response.data);
             }).catch((error) => {
-              console.log(error);
+              reject(error);
             });
           });
     },
