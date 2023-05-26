@@ -58,20 +58,20 @@ services:
             - /app/node_modules
         networks:
             - puma-network
-    # frontend:
-    #     container_name: frontend
-    #     environment:
-    #         ENVIRONMENT: dev
-    #     build:
-    #         context: ../${FRONT_PATH}/puma
-    #         dockerfile: dev.Dockerfile
-    #     ports:
-    #         - "8080:8080"
-    #     volumes:
-    #         - ../${FRONT_PATH}/puma:/app
-    #         - /app/node_modules
-    #     networks:
-    #         - puma-network
+    frontend:
+        container_name: frontend
+        environment:
+            ENVIRONMENT: dev
+        build:
+            context: ../${FRONT_PATH}/puma
+            dockerfile: dev.Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - ../${FRONT_PATH}/puma:/app
+            - /app/node_modules
+        networks:
+            - puma-network
             
 networks:
     puma-network:            
