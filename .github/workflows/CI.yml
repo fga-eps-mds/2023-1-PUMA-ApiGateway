@@ -56,9 +56,3 @@ jobs:
     
     - name: Test
       run: docker exec api-gateway-test npm run test-coverage
-
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

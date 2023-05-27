@@ -95,7 +95,7 @@ module.exports = {
     const reqUserTypeId = userTypeId || '';
     const userUrl = `${global.URL_USER}/userType/${reqUserTypeId}`;
     return new Promise((resolve, reject) => {
-      axios.post(userUrl).then((response) => {
+      axios.get(userUrl).then((response) => {
         resolve(response.data);
       }).catch((error) => {
         if (error.message.includes('404')) {

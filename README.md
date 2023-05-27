@@ -1,13 +1,13 @@
-# 2022-2-PUMA-ApiGateway
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fga-eps-mds_2022-2-PUMA-ApiGateway&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fga-eps-mds_2022-2-PUMA-ApiGateway) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fga-eps-mds_2022-2-PUMA-ApiGateway&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fga-eps-mds_2022-2-PUMA-ApiGateway) [![npm version](https://img.shields.io/badge/npm--express-v4.17.1-blue)](https://www.npmjs.com/package/express/v/4.17.1)
+# 2023-1-PUMA-ApiGateway
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=fga-eps-mds_2023-1-PUMA-ApiGateway&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fga-eps-mds_2023-1-PUMA-ApiGateway) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fga-eps-mds_2023-1-PUMA-ApiGateway&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fga-eps-mds_2023-1-PUMA-ApiGateway) [![npm version](https://img.shields.io/badge/npm--express-v4.17.1-blue)](https://www.npmjs.com/package/express/v/4.17.1)
 
 ## Objetivo
 
-O API Gateway é utilizado como um mutex para a comunicação entre a interface de usuário e os outros micro-serviços. Dessa forma, ao receber uma requisição o gateway atua como uma ponte entre o front end e o serviço desejado. Atualmente, esse serviço é responsável por fazer o tratamento das requisições entre os microsserviços [ProjectService](https://github.com/fga-eps-mds/2022-2-PUMA-ProjectService) e [UserService](https://github.com/fga-eps-mds/2022-2-PUMA-UserService).
+O API Gateway é utilizado como um mutex para a comunicação entre a interface de usuário e os outros micro-serviços. Dessa forma, ao receber uma requisição o gateway atua como uma ponte entre o front end e o serviço desejado. Atualmente, esse serviço é responsável por fazer o tratamento das requisições entre os microsserviços [ProjectService](https://github.com/fga-eps-mds/2023-1-PUMA-ProjectService) e [UserService](https://github.com/fga-eps-mds/2023-1-PUMA-UserService).
 
 ## Endpoints
 
-### [User](https://github.com/fga-eps-mds/2022-2-PUMA-UserService)
+### [User](https://github.com/fga-eps-mds/2023-1-PUMA-UserService)
 #### POST - Registrar
 ```
 /user/register
@@ -32,7 +32,7 @@ O API Gateway é utilizado como um mutex para a comunicação entre a interface 
 ```
 /user/initial
 ```
-### [Project](https://github.com/fga-eps-mds/2022-2-PUMA-ProjectService)
+### [Project](https://github.com/fga-eps-mds/2023-1-PUMA-ProjectService)
 #### GET - Propostas de projetos
 ```
 /project/myProposals
@@ -69,7 +69,7 @@ O API Gateway é utilizado como um mutex para a comunicação entre a interface 
 ```
 /project/:projectId
 ```
-### [Subject](https://github.com/fga-eps-mds/2022-2-PUMA-ProjectService)
+### [Subject](https://github.com/fga-eps-mds/2023-1-PUMA-ProjectService)
 #### GET - Coletar Subject
 ```
 /subject
@@ -106,7 +106,7 @@ O API Gateway é utilizado como um mutex para a comunicação entre a interface 
 ```
 /subject/:subjectid
 ```
-### [Keyword](https://github.com/fga-eps-mds/2022-2-PUMA-ProjectService)
+### [Keyword](https://github.com/fga-eps-mds/2023-1-PUMA-ProjectService)
 #### GET - Alternativa de Keywords
 ```
 /keyword

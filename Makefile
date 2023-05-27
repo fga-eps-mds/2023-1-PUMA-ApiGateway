@@ -38,6 +38,7 @@ test-down:
 up-build:
 	chmod +x ../${USER_PATH}/wait-for-it.sh && \
 	chmod +x ../${PROJECT_PATH}/wait-for-it.sh && \
+	chmod +x ../${EXTERNAL_PATH}/wait-for-it.sh && \
 	sudo docker-compose up --build
 
 .PHONY: up
