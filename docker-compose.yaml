@@ -8,8 +8,6 @@ services:
             POSTGRES_USER: ${DB_USER}
             POSTGRES_DB: ${DB}
             DATABASE_URL: ${DB_URL}
-        volumes:
-            - ./dbdata:/var/lib/postgresql/data
         ports:
             - "5432:5432"
         networks:

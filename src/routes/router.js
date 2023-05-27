@@ -5,7 +5,9 @@ const projectRouter = require('./projectRouter');
 const keywordRouter = require('./keywordRouter');
 const subjectRouter = require('./subjectRouter');
 const classRouter = require('./classRouter');
+const pumaInfoRouter = require('./pumaInfoRouter');
 const externalRouter = require('./externalRouter')
+
 
 const router = express.Router();
 
@@ -22,5 +24,6 @@ module.exports = (app) => {
   app.use('/subject', [subjectRouter]);
   app.use('/keyword', [keywordRouter]);
   app.use('/class', [classRouter]);
+  app.use('/pumaInfo', [pumaInfoRouter]);
   app.use('/external', [externalRouter]);
 };
