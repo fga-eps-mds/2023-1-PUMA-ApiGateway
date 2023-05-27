@@ -6,12 +6,16 @@ environment.configEnv();
 
 const app = express();
 
-const corsOptions = {
-  // origin: `${global.URL_HOM}`,
-  origin: '*',
-};
+// const corsOptions = {
+//   // origin: `${global.URL_HOM}`,
+//   origin: '*',
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: '*',
+}));
 
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));

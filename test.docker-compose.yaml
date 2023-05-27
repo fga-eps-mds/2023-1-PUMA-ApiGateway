@@ -10,6 +10,8 @@ services:
             DATABASE_URL: ${DB_URL_TEST}
         ports:
             - "5432:5432"
+        expose:
+            - 5432
         networks:
             - puma-network-test
     project-service-test:
@@ -21,11 +23,12 @@ services:
             dockerfile: dev.Dockerfile
         ports:
             - "3000:3000"
+        expose:
+            - 3000
         depends_on:
             - dbtest
         volumes:
             - ../${PROJECT_PATH}:/app
-            - /app/node_modules
         networks:
             - puma-network-test
         command:
@@ -46,11 +49,12 @@ services:
             dockerfile: dev.Dockerfile
         ports:
             - "3001:3001"
+        expose:
+            - 3001
         depends_on:
             - dbtest
         volumes:
             - ../${USER_PATH}:/app
-            - /app/node_modules
         networks:
             - puma-network-test
         command:
@@ -69,11 +73,16 @@ services:
         build:
             context: .
             dockerfile: dev.Dockerfile
+        depends_on:
+            - user-service-test
+            - dbtest
+            - project-service-test
         ports:
             - "3004:3004"
+        expose:
+            - 3004
         volumes:
             - ./:/app
-            - /app/node_modules
         networks:
             - puma-network-test
 

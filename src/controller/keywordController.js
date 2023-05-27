@@ -1,4 +1,5 @@
 const axios = require('axios');
+require('../config/environment').configEnv();
 
 module.exports = {
   addKeyword: (data) => {
@@ -65,6 +66,5 @@ module.exports = {
         resolve(response);
       });
     });
-  }
+  },
 };
-
