@@ -39,6 +39,15 @@ router.put('/password/:email', (req, res) => {
   });
 });
 
+router.put('/:id', (req, res) => {
+  userController.updateIdealizer(req.params.id, req.body).then((response) => {
+    res.status(200).json(response);
+  }).catch((error) => {
+    console.log(error);
+    res.status(400).json({ });
+  });
+});
+
 router.post('/recover', (req, res) => {
   userController.recoverPassword(req.body).then((response) => {
     if (response.status === 404) {

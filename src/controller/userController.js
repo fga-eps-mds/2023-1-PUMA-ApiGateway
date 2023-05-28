@@ -61,6 +61,18 @@ module.exports = {
     });
   },
 
+  updateIdealizer: (userId, body) => {
+    const userUrl = `${global.URL_USER}/user/${userId}`;
+    const reqBody = body;
+    return new Promise((resolve, reject) => {
+      axios.put(userUrl, reqBody).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
   recoverPassword: (body) => {
     const userUrl = `${global.URL_USER}/recover`;
     const reqBody = body;
