@@ -4,7 +4,7 @@ const authentication = require('../utils/authentication');
 
 const router = express.Router();
 
-router.get('/', authentication.authenticateAny, (req, res) => {
+router.get('/', (req, res) => {
   pumaInfoController.getPumaInfo().then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {
