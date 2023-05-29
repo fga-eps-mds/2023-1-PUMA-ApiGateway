@@ -135,4 +135,26 @@ module.exports = {
     });
   },
 
+  getPendingApprovalTeacher: () => {
+    const userUrl = `${global.URL_USER}/user/teacher/pending`;
+    return new Promise((resolve, reject) => {
+      axios.get(userUrl).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
+  updateStatusTeacher: (userId, body) => {
+    const userUrl = `${global.URL_USER}/user/teacher/pending/${userId}`;
+    const reqBody = body;
+    return new Promise((resolve, reject) => {
+      axios.patch(userUrl, reqBody).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };
