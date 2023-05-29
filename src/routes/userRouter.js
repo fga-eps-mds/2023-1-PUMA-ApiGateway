@@ -111,7 +111,7 @@ router.delete('/userType/:UserTypeid', (req, res) => {
   });
 });
 
-router.get('/user/teacher/pending', (_, res) => {
+router.get('/teacher/pending', (_, res) => {
   userController.getPendingApprovalTeacher().then((response) => {
       res.status(200).json(response);
   }).catch((response) => {
@@ -119,7 +119,7 @@ router.get('/user/teacher/pending', (_, res) => {
   });
 });
 
-router.patch('/user/teacher/pending/:userId', (req, res) => {
+router.patch('/teacher/pending/:userId', (req, res) => {
   userController.updateStatusTeacher(req.params.userId, req.body).then((response) => {
     if (response.status === 404) {
       res.status(404).json({ message: response.message });
