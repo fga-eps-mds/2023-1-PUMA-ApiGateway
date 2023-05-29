@@ -2,12 +2,12 @@
 const axios = require('axios');
 const jwt = require('jsonwebtoken');
 
-require('../config/environment');
+require('../config/environment').configEnv();
 
 module.exports = {
   registerUser: (body) => {
     const userUrl = `${global.URL_USER}/register`;
-    const reqBody = body;
+    const reqBody = body; 
     return new Promise((resolve, reject) => {
       axios.post(userUrl, reqBody).then((response) => {
         resolve(response);
@@ -110,7 +110,7 @@ module.exports = {
     const userUrl = `${global.URL_USER}/userType/${userTypeId}`;
     const reqBody = body;
     return new Promise((resolve, reject) => {
-      axios.post(userUrl, reqBody).then((response) => {
+      axios.put(userUrl, reqBody).then((response) => {
         resolve(response.data);
       }).catch((error) => {
         if (error.message.includes('404')) {
@@ -124,7 +124,7 @@ module.exports = {
   deleteUserType: (userTypeId) => {
     const userUrl = `${global.URL_USER}/userType/${userTypeId}`;
     return new Promise((resolve, reject) => {
-      axios.post(userUrl).then((response) => {
+      axios.delete(userUrl).then((response) => {
         resolve(response.data);
       }).catch((error) => {
         if (error.message.includes('404')) {
@@ -135,4 +135,26 @@ module.exports = {
     });
   },
 
+  getPendingApprovalTeacher: () => {
+    const userUrl = `${global.URL_USER}/user/teacher/pending`;
+    return new Promise((resolve, reject) => {
+      axios.get(userUrl).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
+
+  updateStatusTeacher: (userId, body) => {
+    const userUrl = `${global.URL_USER}/user/teacher/pending/${userId}`;
+    const reqBody = body;
+    return new Promise((resolve, reject) => {
+      axios.patch(userUrl, reqBody).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      });
+    });
+  },
 };
