@@ -10,12 +10,10 @@ module.exports = {
   }),
 
   addProject: (req) => {
-    const reqBody = req.body;
+    const url = `${global.URL_PROJECT}/project`;
     return new Promise((resolve, reject) => {
-      const url = `${global.URL_PROJECT}/project`;
-      reqBody.userid = authentication.getUserId(req.headers.auth);
-      axios.post(url, reqBody).then((response) => {
-        resolve(response);
+      axios.post(url, req.body).then((response) => {
+        resolve(response.data);
       }).catch((error) => {
         reject(error);
       });
@@ -30,6 +28,15 @@ module.exports = {
       reject(error);
     });
   }),
+
+  getAllProjects: () => {
+    const url = `${global.URL_PROJECT}/project`;
+    return new Promise((resolve, reject) => {
+      axios.get(url).then((response) => {
+        resolve(response);
+      });
+    });
+  },
 
   deleteProject: (projectId) => {
     return new Promise((resolve, reject) => {
