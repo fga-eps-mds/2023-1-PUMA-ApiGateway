@@ -12,7 +12,7 @@ router.get('/myProposals', authentication.authenticateAny, (req, res) => {
   });
 });
 
-router.post('/', authentication.authenticateProfessor, (req, res) => {
+router.post('/', authentication.authenticateAny, (req, res) => {
   projectController.addProject(req).then((response) => {
     res.status(200).json(response);
   }).catch((error) => {
@@ -20,7 +20,7 @@ router.post('/', authentication.authenticateProfessor, (req, res) => {
   });
 });
 
-router.put('/', authentication.authenticateProfessor, (req, res) => {
+router.put('/', authentication.authenticateAny, (req, res) => {
   projectController.putProject(req.body).then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {
@@ -76,7 +76,7 @@ router.get('/:projectId', authentication.authenticateAny, (req, res) => {
   });
 });
 
-router.delete('/:projectId', authentication.authenticateProfessor, (req, res) => {
+router.delete('/:projectId', authentication.authenticateAny, (req, res) => {
   projectController.deleteProject(req.params.projectId).then((response) => {
     res.status(200).json(response);
   }).catch((error) => {
