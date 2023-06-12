@@ -4,14 +4,10 @@ function authenticate(auth, authorizedTypes) {
   let decodedUser;
   try {
     decodedUser = jwt.verify(auth, global.SECRET);
+    return true;
   } catch (e) {
     return false;
   }
-
-  if (authorizedTypes.includes(decodedUser.userType)) {
-    return true;
-  }
-  return false;
 }
 
 module.exports = {
