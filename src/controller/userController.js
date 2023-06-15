@@ -20,8 +20,8 @@ module.exports = {
   logUserIn: async (body) => {
     const userUrl = `${global.URL_USER}/login`;
     const response = await axios.post(userUrl, body);
-    const { userId, type } = response.data;
-    const token = jwt.sign({ userId, userType: type }, global.SECRET, { expiresIn: 604800 });
+    const { userId, permission } = response.data;
+    const token = jwt.sign({ userId, permission }, global.SECRET, { expiresIn: 604800 });
     return { token, ...response.data };
   },
 

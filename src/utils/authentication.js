@@ -4,14 +4,12 @@ function authenticate(auth, authorizedTypes) {
   let decodedUser;
   try {
     decodedUser = jwt.verify(auth, global.SECRET);
+    return true;
+      
+    return false;
   } catch (e) {
     return false;
   }
-
-  if (authorizedTypes.includes(decodedUser.userType)) {
-    return true;
-  }
-  return false;
 }
 
 module.exports = {
@@ -24,7 +22,7 @@ module.exports = {
     return;
   },
   authenticateAny: (req, res, next) => {
-    if (authenticate(req.headers.auth, ['Professor', 'Aluno', 'Agente Externo'])) {
+    if (authenticate(req.headers.auth, ['Professor', 'Aluno', 'Pessoa Fisica', 'Pessoa Juridica'])) {
       next();
     } else {
       return res.status(403).json({ message: 'Forbidden' });
