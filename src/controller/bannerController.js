@@ -12,6 +12,16 @@ module.exports = {
     });
   }),
 
+  getHighlightBanner: () => new Promise((resolve, reject) => {
+    const url = `${global.URL_PROJECT}/banner/highlight`;
+    axios.get(url).then((response) => {
+      console.log(response.data);
+      resolve(response.data);
+    }).catch((error) => {
+      reject(error);
+    });
+  }), 
+
   addBanner: (req) => {
     const reqBody = req.body;
     return new Promise((resolve, reject) => {
@@ -27,6 +37,7 @@ module.exports = {
   getBanner: (bannerId) => new Promise((resolve, reject) => {
     const url = `${global.URL_PROJECT}/banner/${bannerId}`;
     axios.get(url).then((response) => {
+      console.log(response.data);
       resolve(response);
     }).catch((error) => {
       reject(error);

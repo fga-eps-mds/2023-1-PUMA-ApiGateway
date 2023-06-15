@@ -12,7 +12,16 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/highlight', (req, res) => {
+  bannerController.getHighlightBanner().then((response) => {
+    res.status(200).json(response);
+  }).catch((error) => {
+    res.status(400).json(error);
+  });
+})
+
 router.post('/', (req, res) => {
+  console.log(req.data);
   bannerController.addBanner(req).then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {

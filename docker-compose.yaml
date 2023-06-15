@@ -44,22 +44,22 @@ services:
             - /app/node_modules
         networks:
             - puma-network
-    # external-service:
-    #     container_name: external-service
-    #     environment:
-    #         ENVIRONMENT: dev
-    #     build:
-    #         context: ../${EXTERNAL_PATH}/
-    #         dockerfile: dev.Dockerfile
-    #     ports:
-    #         - "3007:3007"
-    #     depends_on:
-    #         - db
-    #     volumes:
-    #         - ../${EXTERNAL_PATH}:/app
-    #         - /app/node_modules
-    #     networks:
-    #         - puma-network
+    external-service:
+        container_name: external-service
+        environment:
+            ENVIRONMENT: dev
+        build:
+            context: ../${EXTERNAL_PATH}/
+            dockerfile: dev.Dockerfile
+        ports:
+            - "3007:3007"
+        depends_on:
+            - db
+        volumes:
+            - ../${EXTERNAL_PATH}:/app
+            - /app/node_modules
+        networks:
+            - puma-network
     api-gateway:
         container_name: api-gateway
         environment:
@@ -74,20 +74,20 @@ services:
             - /app/node_modules
         networks:
             - puma-network
-    # frontend:
-    #     container_name: frontend
-    #     environment:
-    #         ENVIRONMENT: dev
-    #     build:
-    #         context: ../${FRONT_PATH}/puma
-    #         dockerfile: dev.Dockerfile
-    #     ports:
-    #         - "8080:8080"
-    #     volumes:
-    #         - ../${FRONT_PATH}/puma:/app
-    #         - /app/node_modules
-    #     networks:
-    #         - puma-network
+    frontend:
+        container_name: frontend
+        environment:
+            ENVIRONMENT: dev
+        build:
+            context: ../${FRONT_PATH}/puma
+            dockerfile: dev.Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - ../${FRONT_PATH}/puma:/app
+            - /app/node_modules
+        networks:
+            - puma-network
             
 networks:
     puma-network:            
