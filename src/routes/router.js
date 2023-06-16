@@ -8,6 +8,7 @@ const classRouter = require('./classRouter');
 const contactRouter = require('./contactRouter');
 const pumaInfoRouter = require('./pumaInfoRouter');
 const externalRouter = require('./externalRouter');
+const bannerRouter = require('./bannerRouter');
 const partnerProjectRouter = require('./partnerProjectRouter');
 
 const router = express.Router();
@@ -27,6 +28,8 @@ module.exports = (app) => {
   app.use('/class', [classRouter]);
   app.use('/pumaInfo', [pumaInfoRouter]);
   app.use('/external', [externalRouter]);
+  app.use('/contact', [contactRouter])
+  app.use('/banner', [bannerRouter])
   app.use('/contact', [contactRouter]);
   app.use('/partnerProject', [partnerProjectRouter]);
 };
