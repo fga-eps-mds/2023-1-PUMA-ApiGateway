@@ -49,11 +49,11 @@ module.exports = {
     ;
   },
 
-  updatePassword: (param) => {
-    const userUrl = `${global.URL_USER}/password/${param.email}`;
-    const reqBody = param;
+  updatePassword: ({password, token}) => {
+    const userUrl = `${global.URL_USER}/password/${token}`;
+    const reqBody = password;
     return new Promise((resolve, reject) => {
-      axios.put(userUrl, reqBody).then((response) => {
+      axios.put(userUrl, {password: reqBody}).then((response) => {
         resolve(response.data);
       }).catch((error) => {
         reject(error);
