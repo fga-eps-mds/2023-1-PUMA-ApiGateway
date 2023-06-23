@@ -157,4 +157,15 @@ module.exports = {
       });
     });
   },
+
+  getAllUsers: () => {
+    const userUrl = `${global.URL_USER}/user/all`;
+    return new Promise((resolve, reject) => {
+      axios.get(userUrl).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+  }
 };
