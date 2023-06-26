@@ -134,4 +134,28 @@ router.patch('/teacher/pending/:userId', (req, res) => {
   });
 });
 
+router.get('/all', (_, res) => {
+  userController.getAllUsers().then((response) => {
+      res.status(200).json(response);
+  }).catch((response) => {
+    res.status(400).json(response);
+  });
+});
+
+router.put('/revoke/:userId', (req, res) => {
+  userController.revokeUserPermissions(req.params.userId).then((response) => {
+    res.status(200).json(response);
+  }).catch((response) => {
+    res.status(400).json(response);
+  });
+});
+
+router.put('/userTypes/change', (req, res) => {
+  userController.changeUserTypes(req.body).then((response) => {
+    res.status(200).json(response);
+  }).catch((response) => {
+    res.status(400).json(response);
+  });
+});
+
 module.exports = router;
