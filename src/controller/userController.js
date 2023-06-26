@@ -167,5 +167,28 @@ module.exports = {
         reject(error);
       })
     })
-  }
+  },
+
+  revokeUserPermissions: (userId) => {
+    const userUrl = `${global.URL_USER}/user/revoke/${userId}`;
+    return new Promise((resolve, reject) => {
+      axios.put(userUrl).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+  },
+
+  changeUserTypes: (body) => {
+    const userUrl = `${global.URL_USER}/users/type/change`;
+    const reqBody = body;
+    return new Promise((resolve, reject) => {
+      axios.put(userUrl, reqBody).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+  },
 };
