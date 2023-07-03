@@ -74,9 +74,9 @@ services:
             context: .
             dockerfile: dev.Dockerfile
         depends_on:
-            - user-service-test
+            # - user-service-test
             - dbtest
-            - project-service-test
+            # - project-service-test
         ports:
             - "3004:3004"
         expose:
