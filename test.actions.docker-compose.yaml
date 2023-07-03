@@ -12,61 +12,61 @@ services:
             - "5432:5432"
         networks:
             - puma-network-test
-    project-service-test:
-        container_name: project-service-test
-        environment:
-            ENVIRONMENT: test
-            DB_URL_TEST: postgres://pumaadmin:pumaadmin@dbtest:5432/puma
-            SECRET: kronk
-        build:
-            context: ./${PROJECT_PATH}/
-            dockerfile: test.Dockerfile
-        ports:
-            - "3000:3000"
-        depends_on:
-            - dbtest
-        volumes:
-            - ./${PROJECT_PATH}:/app
-            - /app/node_modules
-        networks:
-            - puma-network-test
-        command:
-          [
-              "./wait-for-it.sh",
-              "dbtest:5432",
-              "--",
-              "npm",
-              "run",
-              "start-dev"
-          ]
-    user-service-test:
-        container_name: user-service-test
-        environment:
-            ENVIRONMENT: test
-            DB_URL_TEST: postgres://pumaadmin:pumaadmin@dbtest:5432/puma
-            SECRET: kronk
-        build:
-            context: ./${USER_PATH}/
-            dockerfile: test.Dockerfile
-        ports:
-            - "3001:3001"
-        depends_on:
-            - dbtest
-            - project-service-test
-        volumes:
-            - ./${USER_PATH}:/app
-            - /app/node_modules
-        networks:
-            - puma-network-test
-        command:
-          [
-              "./wait-for-it.sh",
-              "dbtest:5432",
-              "--",
-              "npm",
-              "run",
-              "start-dev"
-          ]
+    # project-service-test:
+    #     container_name: project-service-test
+    #     environment:
+    #         ENVIRONMENT: test
+    #         DB_URL_TEST: postgres://pumaadmin:pumaadmin@dbtest:5432/puma
+    #         SECRET: kronk
+    #     build:
+    #         context: ./${PROJECT_PATH}/
+    #         dockerfile: test.Dockerfile
+    #     ports:
+    #         - "3000:3000"
+    #     depends_on:
+    #         - dbtest
+    #     volumes:
+    #         - ./${PROJECT_PATH}:/app
+    #         - /app/node_modules
+    #     networks:
+    #         - puma-network-test
+    #     command:
+    #       [
+    #           "./wait-for-it.sh",
+    #           "dbtest:5432",
+    #           "--",
+    #           "npm",
+    #           "run",
+    #           "start-dev"
+    #       ]
+    # user-service-test:
+    #     container_name: user-service-test
+    #     environment:
+    #         ENVIRONMENT: test
+    #         DB_URL_TEST: postgres://pumaadmin:pumaadmin@dbtest:5432/puma
+    #         SECRET: kronk
+    #     build:
+    #         context: ./${USER_PATH}/
+    #         dockerfile: test.Dockerfile
+    #     ports:
+    #         - "3001:3001"
+    #     depends_on:
+    #         - dbtest
+    #         - project-service-test
+    #     volumes:
+    #         - ./${USER_PATH}:/app
+    #         - /app/node_modules
+    #     networks:
+    #         - puma-network-test
+    #     command:
+    #       [
+    #           "./wait-for-it.sh",
+    #           "dbtest:5432",
+    #           "--",
+    #           "npm",
+    #           "run",
+    #           "start-dev"
+    #       ]
     api-gateway-test:
         container_name: api-gateway-test
         environment:
