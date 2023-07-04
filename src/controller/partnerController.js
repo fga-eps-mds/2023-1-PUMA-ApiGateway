@@ -3,7 +3,7 @@ require('../config/environment').configEnv();
 
 module.exports = {
   addPartner: (reqBody) => new Promise((resolve, reject) => {
-    const url = `${global.URL_PROJECT}/partners`;
+    const url = `${global.URL_PROJECT}/partner`;
     axios.post(url, reqBody).then((response) => {
       resolve(response);
     }).catch((error) => {
@@ -20,7 +20,7 @@ module.exports = {
   }),
 
   getPartners: () => new Promise((resolve, reject) => {
-    const url = `${global.URL_PROJECT}/partners`;
+    const url = `${global.URL_PROJECT}/partner`;
     axios.get(url).then((response) => {
       resolve(response);
     }).catch((error) => {
