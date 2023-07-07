@@ -3,30 +3,33 @@ require('../config/environment').configEnv();
 
 module.exports = {
   addPartner: (reqBody) => new Promise((resolve, reject) => {
-    const url = `${global.URL_PROJECT}/partner`;
+    const url = `${global.URL_PROJECT}/partners`;
+    console.log(reqBody);
     axios.post(url, reqBody).then((response) => {
       resolve(response);
     }).catch((error) => {
       console.log(error);
       reject(error);
-    });  
+    });
   }),
 
   getPartner: (partnerId) => new Promise((resolve, reject) => {
     const url = `${global.URL_PROJECT}/partner/${partnerId}`;
     axios.get(url).then((response) => {
       resolve(response);
+    }).catch((error) => {
+      reject(error);
     });
   }),
 
   getPartners: () => new Promise((resolve, reject) => {
-    const url = `${global.URL_PROJECT}/partner`;
+    const url = `${global.URL_PROJECT}/partners`;
     axios.get(url).then((response) => {
       resolve(response);
     }).catch((error) => {
       console.log(error);
       reject(error);
-    });  
+    });
   }),
 
   updatePartner: (partnerId, data) => {
