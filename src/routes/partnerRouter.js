@@ -38,7 +38,7 @@ router.put('/:partnerId', (req, res) => {
 });
 
 router.delete('/:partnerId', (req, res) => {
-  partnerController.deletePartner(req.params.partnerid).then((response) => {
+  partnerController.deletePartner(req.params.partnerId).then((response) => {
     res.status(200).json(response.data);
   }).catch((error) => {
     res.status(400).json(error);
