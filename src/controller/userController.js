@@ -16,6 +16,7 @@ module.exports = {
       });
     });
   },
+  
 
   logUserIn: async (body) => {
     const userUrl = `${global.URL_USER}/login`;
