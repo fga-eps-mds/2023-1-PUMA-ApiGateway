@@ -5,8 +5,6 @@ function authenticate(auth, authorizedTypes) {
   try {
     decodedUser = jwt.verify(auth, global.SECRET);
     return true;
-      
-    return false;
   } catch (e) {
     return false;
   }
@@ -19,7 +17,6 @@ module.exports = {
     } else {
       return res.status(403).json({ message: 'Forbidden' });
     }
-    return;
   },
   authenticateAny: (req, res, next) => {
     if (authenticate(req.headers.auth, ['Professor', 'Aluno', 'Pessoa Fisica', 'Pessoa Juridica'])) {
@@ -27,9 +24,6 @@ module.exports = {
     } else {
       return res.status(403).json({ message: 'Forbidden' });
     }
-    return;
   },
-  getUserId: (auth) => {
-    return jwt.verify(auth, global.SECRET).userId;
-  },
+  getUserId: (auth) => jwt.verify(auth, global.SECRET).userId,
 };
