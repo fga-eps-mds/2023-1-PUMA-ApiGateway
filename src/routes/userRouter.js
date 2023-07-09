@@ -31,8 +31,11 @@ router.get('/initial', (req, res) => {
   });
 });
 
-router.put('/password/:email', (req, res) => {
-  userController.updatePassword({ ...req.body, ...req.params }).then((response) => {
+router.put('/password/:token', (req, res) => {
+  const { body, params } = req;
+  const { token } = params;
+
+  userController.updatePassword({ ...body, token }).then((response) => {
     res.status(200).json(response);
   }).catch(() => {
     res.status(400).json({ });
@@ -126,6 +129,30 @@ router.patch('/teacher/pending/:userId', (req, res) => {
     } else {
       res.status(200).json(response);
     }
+  }).catch((response) => {
+    res.status(400).json(response);
+  });
+});
+
+router.get('/all', (_, res) => {
+  userController.getAllUsers().then((response) => {
+      res.status(200).json(response);
+  }).catch((response) => {
+    res.status(400).json(response);
+  });
+});
+
+router.put('/revoke/:userId', (req, res) => {
+  userController.revokeUserPermissions(req.params.userId).then((response) => {
+    res.status(200).json(response);
+  }).catch((response) => {
+    res.status(400).json(response);
+  });
+});
+
+router.put('/userTypes/change', (req, res) => {
+  userController.changeUserTypes(req.body).then((response) => {
+    res.status(200).json(response);
   }).catch((response) => {
     res.status(400).json(response);
   });

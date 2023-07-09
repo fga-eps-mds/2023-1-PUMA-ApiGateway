@@ -24,26 +24,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Use Node.js 14.x
       uses: actions/setup-node@v3
       with:
         node-version: 14.x
-        
-    - name: check userService
-      uses: actions/checkout@v3
-      with:
-        repository: fga-eps-mds/2022-2-PUMA-UserService
-        path: 2022-2-PUMA-UserService
-    
-    - name: check projectService
-      uses: actions/checkout@v3
-      with:
-        repository: fga-eps-mds/2022-2-PUMA-ProjectService
-        path: 2022-2-PUMA-ProjectService
 
-    - name: Build and up containers
-      run: | 
-          docker-compose -f test.actions.docker-compose.yaml up --build -d    
-    
-    - name: Test
-      run: docker exec api-gateway-test npm run test
+    - name: Run npm install
+      run: npm install
+    - name: Run Tests
+      run: npm run test

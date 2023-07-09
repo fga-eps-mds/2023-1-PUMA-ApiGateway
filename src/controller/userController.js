@@ -16,12 +16,13 @@ module.exports = {
       });
     });
   },
+  
 
   logUserIn: async (body) => {
     const userUrl = `${global.URL_USER}/login`;
     const response = await axios.post(userUrl, body);
-    const { userId, type } = response.data;
-    const token = jwt.sign({ userId, userType: type }, global.SECRET, { expiresIn: 604800 });
+    const { userId, permission } = response.data;
+    const token = jwt.sign({ userId, permission }, global.SECRET, { expiresIn: 604800 });
     return { token, ...response.data };
   },
 
@@ -49,11 +50,11 @@ module.exports = {
     ;
   },
 
-  updatePassword: (param) => {
-    const userUrl = `${global.URL_USER}/password/${param.email}`;
-    const reqBody = param;
+  updatePassword: ({password, token}) => {
+    const userUrl = `${global.URL_USER}/password/${token}`;
+    const reqBody = password;
     return new Promise((resolve, reject) => {
-      axios.put(userUrl, reqBody).then((response) => {
+      axios.put(userUrl, {password: reqBody}).then((response) => {
         resolve(response.data);
       }).catch((error) => {
         reject(error);
@@ -156,5 +157,39 @@ module.exports = {
         reject(error);
       });
     });
+  },
+
+  getAllUsers: () => {
+    const userUrl = `${global.URL_USER}/user/all`;
+    return new Promise((resolve, reject) => {
+      axios.get(userUrl).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+  },
+
+  revokeUserPermissions: (userId) => {
+    const userUrl = `${global.URL_USER}/user/revoke/${userId}`;
+    return new Promise((resolve, reject) => {
+      axios.put(userUrl).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
+  },
+
+  changeUserTypes: (body) => {
+    const userUrl = `${global.URL_USER}/users/type/change`;
+    const reqBody = body;
+    return new Promise((resolve, reject) => {
+      axios.put(userUrl, reqBody).then((response) => {
+        resolve(response.data);
+      }).catch((error) => {
+        reject(error);
+      })
+    })
   },
 };

@@ -15,11 +15,8 @@ jobs:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Install dependencies
         run: npm install
-      - name: Build and up containers
-        run: | 
-          docker-compose -f test.actions.docker-compose.yaml up --build -d    
-      - name: Test Coverage
-        run: docker exec api-gateway-test npm run test
+      - name: Test and coverage
+        run: npm run test
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
