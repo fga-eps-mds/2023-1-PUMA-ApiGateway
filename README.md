@@ -154,6 +154,4 @@ Para encerrar os containers de desenvolvimento execute:
 
 Para rodar os testes, execute:
 
-``` $ sudo make test```
-
-``` $ sudo make test-debug```
+``` $ npm run test```
